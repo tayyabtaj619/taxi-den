@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Taxi Den Bosch | 24/7 Taxi, Airport Transfers &amp; Business Transport</title>
+<meta name="description" content="Book a reliable taxi in Den Bosch, available 24/7. Local journeys, airport transfers to Eindhoven Airport and Schiphol, business transport, group travel, weddings and private tours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F7F5;color:#101010;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#101010;text-decoration-color:#E5B957;text-underline-offset:3px}
+a:hover{color:#8a6a1f}
+input,select,button{font-family:inherit}
+input[type="date"],input[type="time"]{min-height:52px}
+:focus-visible{outline:3px solid #E5B957;outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;overflow-x:hidden">
+
+  <header style="position:absolute;top:0;left:0;right:0;z-index:20;color:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:22px clamp(20px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="#top" aria-label="Taxi Den Bosch, back to the homepage" style="display:flex;align-items:center;gap:10px;color:#FFFFFF;text-decoration:none">
+        <span style="width:34px;height:34px;border-radius:8px;background:#E5B957;color:#101010;display:grid;place-items:center;font-weight:800;font-size:14px;letter-spacing:-0.02em">TDB</span>
+        <span style="display:flex;flex-direction:column;line-height:1.1">
+          <span style="font-weight:800;font-size:16px;letter-spacing:0.04em;white-space:nowrap">TAXI DEN BOSCH</span>
+          <span style="font-size:11px;color:#CFCFCF;letter-spacing:0.08em;white-space:nowrap">SNEL TAXI</span>
+        </span>
+      </a>
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Main navigation" style="display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600">
+          <a href="#services" style="color:#FFFFFF;text-decoration:none" style-hover="color:#E5B957">Services</a>
+          <a href="#airport" style="color:#FFFFFF;text-decoration:none" style-hover="color:#E5B957">Airport Transfers</a>
+          <a href="#business" style="color:#FFFFFF;text-decoration:none" style-hover="color:#E5B957">Business Transport</a>
+          <a href="#about" style="color:#FFFFFF;text-decoration:none" style-hover="color:#E5B957">About</a>
+          <a href="#contact" style="color:#FFFFFF;text-decoration:none" style-hover="color:#E5B957">Contact</a>
+        </nav>
+        <div style="display:flex;align-items:center;gap:20px">
+          <a href="tel:+31732340600" style="color:#FFFFFF;text-decoration:none;font-weight:700;font-size:14px;display:flex;flex-direction:column;line-height:1.2">
+            <span style="font-size:11px;font-weight:600;color:#CFCFCF;letter-spacing:0.06em">AVAILABLE 24/7</span>
+            <span style="white-space:nowrap">073 234 0600</span>
+          </a>
+          <a href="#book" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:#E5B957;color:#101010;text-decoration:none;font-weight:700;font-size:14px;padding:13px 20px;border-radius:8px" style-hover="background:#F0CB73;color:#101010">Book a Taxi</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:10px">
+          <a href="tel:+31732340600" aria-label="Call 073 234 0600" style="white-space:nowrap;min-width:44px;height:44px;padding:0 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.35);color:#FFFFFF;text-decoration:none;display:grid;place-items:center;font-weight:700;font-size:13px">Call</a>
+          <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="mobile-menu" style="height:44px;padding:0 16px;border-radius:8px;border:0;background:#E5B957;color:#101010;font-weight:700;font-size:14px;cursor:pointer">{{ menuLabel }}</button>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showMobileMenu }}" hint-placeholder-val="{{ false }}">
+      <nav id="mobile-menu" aria-label="Mobile navigation" style="margin:0 clamp(12px,3vw,24px);background:#101010;border:1px solid #2a2a2a;border-radius:12px;padding:8px;display:flex;flex-direction:column">
+        <a href="#services" onClick="{{ closeMenu }}" style="color:#FFFFFF;text-decoration:none;padding:14px 16px;font-weight:600;font-size:16px;border-bottom:1px solid #222">Services</a>
+        <a href="#airport" onClick="{{ closeMenu }}" style="color:#FFFFFF;text-decoration:none;padding:14px 16px;font-weight:600;font-size:16px;border-bottom:1px solid #222">Airport Transfers</a>
+        <a href="#business" onClick="{{ closeMenu }}" style="color:#FFFFFF;text-decoration:none;padding:14px 16px;font-weight:600;font-size:16px;border-bottom:1px solid #222">Business Transport</a>
+        <a href="#about" onClick="{{ closeMenu }}" style="color:#FFFFFF;text-decoration:none;padding:14px 16px;font-weight:600;font-size:16px;border-bottom:1px solid #222">About</a>
+        <a href="#contact" onClick="{{ closeMenu }}" style="color:#FFFFFF;text-decoration:none;padding:14px 16px;font-weight:600;font-size:16px;border-bottom:1px solid #222">Contact</a>
+        <div style="display:flex;gap:8px;padding:12px 8px 8px;flex-wrap:wrap">
+          <a href="#book" onClick="{{ closeMenu }}" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;flex:1 1 160px;text-align:center;background:#E5B957;color:#101010;text-decoration:none;font-weight:700;padding:14px;border-radius:8px">Book a Taxi</a>
+          <a href="tel:+31732340600" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;flex:1 1 160px;text-align:center;border:1px solid #444;color:#FFFFFF;text-decoration:none;font-weight:700;padding:14px;border-radius:8px">073 234 0600</a>
+        </div>
+      </nav>
+    </sc-if>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section aria-labelledby="hero-title" style="position:relative;background:#101010;color:#FFFFFF;min-height:clamp(660px,90vh,860px);display:flex;align-items:center">
+      <div role="img" aria-label="Photo: black taxi at night in the centre of Den Bosch" style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#1b1b1b 0 14px,#151515 14px 28px);display:flex;align-items:flex-end;justify-content:flex-end;padding:0 24px 180px">
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#6b6b6b">hero photo: taxi / executive transport, 2400×1400</span>
+      </div>
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,16,16,0.92) 0%,rgba(16,16,16,0.7) 50%,rgba(16,16,16,0.35) 100%)"></div>
+      <div style="position:relative;width:100%;max-width:1240px;margin:0 auto;padding:140px clamp(20px,4vw,40px) 190px">
+        <p style="margin:0 0 22px;font-size:13px;font-weight:700;letter-spacing:0.14em;color:#E5B957">TAXI DEN BOSCH · AVAILABLE AROUND THE CLOCK</p>
+        <h1 id="hero-title" style="margin:0;max-width:820px;font-size:clamp(38px,5.6vw,72px);line-height:1.04;font-weight:800;letter-spacing:-0.03em;text-wrap:balance">Reliable Taxi Service. Whenever You Need It.</h1>
+        <p style="margin:24px 0 0;max-width:600px;font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:#D9D9D9;text-wrap:pretty">Book reliable taxi transport in Den Bosch and beyond. From local journeys and airport transfers to business travel and group transport, we're here to help you reach your destination comfortably.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:36px">
+          <a href="#book" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:#E5B957;color:#101010;text-decoration:none;font-weight:700;font-size:16px;padding:17px 28px;border-radius:8px;min-height:52px" style-hover="background:#F0CB73;color:#101010">Book a Taxi</a>
+          <a href="tel:+31732340600" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border:1px solid rgba(255,255,255,0.45);color:#FFFFFF;text-decoration:none;font-weight:700;font-size:16px;padding:17px 28px;border-radius:8px;min-height:52px" style-hover="border-color:#FFFFFF;color:#FFFFFF">Call Us · 073 234 0600</a>
+        </div>
+        <ul style="list-style:none;margin:36px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:14px;font-weight:600;color:#E6E6E6">
+          <li style="display:flex;align-items:center;gap:10px;white-space:nowrap"><span aria-hidden="true" style="width:8px;height:8px;background:#E5B957;transform:rotate(45deg)"></span>Available 24/7</li>
+          <li style="display:flex;align-items:center;gap:10px;white-space:nowrap"><span aria-hidden="true" style="width:8px;height:8px;background:#E5B957;transform:rotate(45deg)"></span>Transparent fares, no hidden costs</li>
+          <li style="display:flex;align-items:center;gap:10px;white-space:nowrap"><span aria-hidden="true" style="width:8px;height:8px;background:#E5B957;transform:rotate(45deg)"></span>Trained, professional drivers</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="book" aria-labelledby="book-title" style="position:relative;z-index:5;max-width:1240px;margin:-130px auto 0;padding:0 clamp(12px,3vw,40px)">
+      <div style="background:#FFFFFF;border-radius:16px;box-shadow:0 24px 60px rgba(16,16,16,0.14);padding:clamp(20px,3vw,36px)">
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-bottom:24px">
+            <h2 id="book-title" style="margin:0;white-space:nowrap;font-size:clamp(22px,2vw,26px);font-weight:800;letter-spacing:-0.02em">Plan Your Journey</h2>
+            <div role="group" aria-label="Trip type" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#F7F7F5;border:1px solid #E7E7E7;border-radius:8px;padding:4px;min-width:240px">
+              <button type="button" onClick="{{ setOneWay }}" aria-pressed="{{ trip.one }}" style="border:0;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;min-height:40px;background:{{ trip.oneBg }};color:#101010;box-shadow:{{ trip.oneSh }}">One-Way</button>
+              <button type="button" onClick="{{ setReturn }}" aria-pressed="{{ trip.ret }}" style="border:0;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;min-height:40px;background:{{ trip.retBg }};color:#101010;box-shadow:{{ trip.retSh }}">Return</button>
+            </div>
+          </div>
+          <form noValidate="" onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px;align-items:start">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+                  <label for="pickup" style="font-size:13px;font-weight:700;white-space:nowrap">Pickup Location</label>
+                  <button type="button" onClick="{{ useLocation }}" style="border:0;background:none;padding:4px 0;font-size:12px;white-space:nowrap;font-weight:700;color:#8a6a1f;cursor:pointer;min-height:28px;text-decoration:underline;text-underline-offset:3px">{{ locLabel }}</button>
+                </div>
+                <input id="pickup" type="text" autoComplete="street-address" placeholder="e.g. 's-Hertogenbosch Central Station" value="{{ f.pickup }}" onChange="{{ onPickup }}" aria-invalid="{{ inv.pickup }}" aria-describedby="pickup-err" style="height:52px;padding:0 16px;border-radius:8px;border:1px solid {{ bc.pickup }};background:#F7F7F5;font-size:16px;color:#101010" style-focus="border-color:#101010;background:#FFFFFF"></input>
+                <sc-if value="{{ e.pickup }}" hint-placeholder-val="{{ false }}"><p id="pickup-err" role="alert" style="margin:0;font-size:13px;color:#B3261E;font-weight:600">{{ e.pickup }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+                  <label for="dest" style="font-size:13px;font-weight:700;white-space:nowrap">Destination</label>
+                  <button type="button" onClick="{{ swap }}" aria-label="Swap pickup location and destination" style="border:1px solid #E7E7E7;background:#FFFFFF;border-radius:6px;font-size:12px;font-weight:700;padding:4px 10px;min-height:28px;white-space:nowrap;cursor:pointer;color:#101010" style-hover="border-color:#101010">⇄ Swap</button>
+                </div>
+                <input id="dest" type="text" placeholder="e.g. Eindhoven Airport" value="{{ f.dest }}" onChange="{{ onDest }}" aria-invalid="{{ inv.dest }}" aria-describedby="dest-err" style="height:52px;padding:0 16px;border-radius:8px;border:1px solid {{ bc.dest }};background:#F7F7F5;font-size:16px;color:#101010" style-focus="border-color:#101010;background:#FFFFFF"></input>
+                <sc-if value="{{ e.dest }}" hint-placeholder-val="{{ false }}"><p id="dest-err" role="alert" style="margin:0;font-size:13px;color:#B3261E;font-weight:600">{{ e.dest }}</p></sc-if>
+              </div>
+            </div>
+            <sc-if value="{{ f.hasStop }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+                  <label for="stop" style="font-size:13px;font-weight:700;white-space:nowrap">Stop</label>
+                  <button type="button" onClick="{{ toggleStop }}" style="border:0;background:none;font-size:12px;font-weight:700;color:#686868;cursor:pointer;min-height:28px;white-space:nowrap">Remove stop</button>
+                </div>
+                <input id="stop" type="text" placeholder="Address of the stop" value="{{ f.stop }}" onChange="{{ onStop }}" aria-invalid="{{ inv.stop }}" aria-describedby="stop-err" style="height:52px;padding:0 16px;border-radius:8px;border:1px solid {{ bc.stop }};background:#F7F7F5;font-size:16px;color:#101010" style-focus="border-color:#101010;background:#FFFFFF"></input>
+                <sc-if value="{{ e.stop }}" hint-placeholder-val="{{ false }}"><p id="stop-err" role="alert" style="margin:0;font-size:13px;color:#B3261E;font-weight:600">{{ e.stop }}</p></sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ noStop }}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{ toggleStop }}" style="align-self:flex-start;border:1px dashed #CFCFCF;white-space:nowrap;background:#FFFFFF;border-radius:8px;font-size:14px;font-weight:700;padding:0 16px;min-height:44px;cursor:pointer;color:#101010" style-hover="border-color:#101010">+ Add a Stop</button>
+            </sc-if>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;align-items:start">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="date" style="font-size:13px;font-weight:700;white-space:nowrap">Pickup Date</label>
+                <input id="date" type="date" min="{{ today }}" value="{{ f.date }}" onChange="{{ onDate }}" aria-invalid="{{ inv.date }}" aria-describedby="date-err" style="height:52px;padding:0 14px;border-radius:8px;border:1px solid {{ bc.date }};background:#F7F7F5;font-size:16px;color:#101010;width:100%" style-focus="border-color:#101010;background:#FFFFFF"></input>
+                <sc-if value="{{ e.date }}" hint-placeholder-val="{{ false }}"><p id="date-err" role="alert" style="margin:0;font-size:13px;color:#B3261E;font-weight:600">{{ e.date }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="time" style="font-size:13px;font-weight:700;white-space:nowrap">Pickup Time</label>
+                <input id="time" type="time" step="300" value="{{ f.time }}" onChange="{{ onTime }}" aria-invalid="{{ inv.time }}" aria-describedby="time-err" style="height:52px;padding:0 14px;border-radius:8px;border:1px solid {{ bc.time }};background:#F7F7F5;font-size:16px;color:#101010;width:100%" style-focus="border-color:#101010;background:#FFFFFF"></input>
+                <sc-if value="{{ e.time }}" hint-placeholder-val="{{ false }}"><p id="time-err" role="alert" style="margin:0;font-size:13px;color:#B3261E;font-weight:600">{{ e.time }}</p></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <label for="pax" style="font-size:13px;font-weight:700;white-space:nowrap">Number of Passengers</label>
+                <select id="pax" value="{{ f.pax }}" onChange="{{ onPax }}" style="height:52px;padding:0 14px;border-radius:8px;border:1px solid #E7E7E7;background:#F7F7F5;font-size:16px;color:#101010" style-focus="border-color:#101010;background:#FFFFFF">
+                  <option value="1">1 passenger</option>
+                  <option value="2">2 passengers</option>
+                  <option value="3">3 passengers</option>
+                  <option value="4">4 passengers</option>
+                  <option value="5">5 passengers</option>
+                  <option value="6">6 passengers</option>
+                  <option value="7">7 passengers</option>
+                </select>
+              </div>
+              <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:6px;min-width:0">
+                <legend style="font-size:13px;font-weight:700;padding:0;margin-bottom:6px">Luggage</legend>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#F7F7F5;border:1px solid #E7E7E7;border-radius:8px;padding:4px;height:52px">
+                  <button type="button" onClick="{{ lugYes }}" aria-pressed="{{ lug.yes }}" style="border:0;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;background:{{ lug.yesBg }};color:#101010;box-shadow:{{ lug.yesSh }}">Yes</button>
+                  <button type="button" onClick="{{ lugNo }}" aria-pressed="{{ lug.no }}" style="border:0;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;background:{{ lug.noBg }};color:#101010;box-shadow:{{ lug.noSh }}">No</button>
+                </div>
+              </fieldset>
+            </div>
+            <sc-if value="{{ trip.ret }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px;align-items:start;padding-top:14px;border-top:1px solid #E7E7E7">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="rdate" style="font-size:13px;font-weight:700;white-space:nowrap">Return Date</label>
+                  <input id="rdate" type="date" min="{{ returnMin }}" value="{{ f.rdate }}" onChange="{{ onRdate }}" aria-invalid="{{ inv.rdate }}" aria-describedby="rdate-err" style="height:52px;padding:0 14px;border-radius:8px;border:1px solid {{ bc.rdate }};background:#F7F7F5;font-size:16px;color:#101010;width:100%" style-focus="border-color:#101010;background:#FFFFFF"></input>
+                  <sc-if value="{{ e.rdate }}" hint-placeholder-val="{{ false }}"><p id="rdate-err" role="alert" style="margin:0;font-size:13px;color:#B3261E;font-weight:600">{{ e.rdate }}</p></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <label for="rtime" style="font-size:13px;font-weight:700;white-space:nowrap">Return Time</label>
+                  <input id="rtime" type="time" step="300" value="{{ f.rtime }}" onChange="{{ onRtime }}" aria-invalid="{{ inv.rtime }}" aria-describedby="rtime-err" style="height:52px;padding:0 14px;border-radius:8px;border:1px solid {{ bc.rtime }};background:#F7F7F5;font-size:16px;color:#101010;width:100%" style-focus="border-color:#101010;background:#FFFFFF"></input>
+                  <sc-if value="{{ e.rtime }}" hint-placeholder-val="{{ false }}"><p id="rtime-err" role="alert" style="margin:0;font-size:13px;color:#B3261E;font-weight:600">{{ e.rtime }}</p></sc-if>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ largeGroup }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;font-size:13px;color:#686868">For 5 to 7 passengers we plan a spacious vehicle such as the Mercedes Vito or V-Class.</p>
+            </sc-if>
+            <sc-if value="{{ e.form }}" hint-placeholder-val="{{ false }}">
+              <p role="alert" style="margin:0;padding:12px 14px;border-radius:8px;background:#FBEDEC;color:#8C1D18;font-size:14px;font-weight:600">{{ e.form }}</p>
+            </sc-if>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding-top:6px">
+              <p style="margin:0;font-size:12px;color:#686868;max-width:540px;line-height:1.5">Development version: online booking is not yet connected. Your request will not be sent to Taxi Den Bosch and no fare will be calculated.</p>
+              <button type="submit" disabled="{{ loading }}" style="min-height:56px;padding:0 30px;white-space:nowrap;border:0;border-radius:8px;background:#101010;color:#FFFFFF;font-weight:700;font-size:16px;cursor:pointer" style-hover="background:#2a2a2a">
+                <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><span aria-live="polite">Checking details…</span></sc-if>
+                <sc-if value="{{ notLoading }}" hint-placeholder-val="{{ true }}"><span>Calculate Fare &amp; Book</span></sc-if>
+              </button>
+            </div>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ showDone }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+              <span style="font-size:11px;font-weight:800;letter-spacing:0.1em;background:#FFF4DA;color:#6B4E10;padding:6px 10px;border-radius:999px">TEST MODE</span>
+              <h2 style="margin:0;font-size:clamp(22px,2vw,26px);font-weight:800;letter-spacing:-0.02em">Your journey details are valid</h2>
+            </div>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#686868;max-width:700px">This is a development version. Your request has <strong style="color:#101010">not</strong> been sent to Taxi Den Bosch and no journey has been booked. Call <a href="tel:+31732340600" style="font-weight:700">073 234 0600</a> or send a <a href="https://wa.me/31644479990" style="font-weight:700">WhatsApp message</a> to book now.</p>
+            <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:1px;background:#E7E7E7;border:1px solid #E7E7E7;border-radius:10px;overflow:hidden">
+              <div style="background:#FFFFFF;padding:14px 16px"><dt style="font-size:12px;color:#686868;font-weight:600">From</dt><dd style="margin:4px 0 0;font-weight:700">{{ r.pickup }}</dd></div>
+              <div style="background:#FFFFFF;padding:14px 16px"><dt style="font-size:12px;color:#686868;font-weight:600">To</dt><dd style="margin:4px 0 0;font-weight:700">{{ r.dest }}</dd></div>
+              <div style="background:#FFFFFF;padding:14px 16px"><dt style="font-size:12px;color:#686868;font-weight:600">Pickup</dt><dd style="margin:4px 0 0;font-weight:700">{{ r.when }}</dd></div>
+              <div style="background:#FFFFFF;padding:14px 16px"><dt style="font-size:12px;color:#686868;font-weight:600">Trip</dt><dd style="margin:4px 0 0;font-weight:700">{{ r.trip }}</dd></div>
+              <div style="background:#FFFFFF;padding:14px 16px"><dt style="font-size:12px;color:#686868;font-weight:600">Passengers · luggage</dt><dd style="margin:4px 0 0;font-weight:700">{{ r.paxLug }}</dd></div>
+            </dl>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+              <a href="tel:+31732340600" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:#E5B957;color:#101010;text-decoration:none;font-weight:700;padding:15px 24px;border-radius:8px">Call 073 234 0600</a>
+              <button type="button" onClick="{{ reset }}" style="border:1px solid #E7E7E7;background:#FFFFFF;border-radius:8px;font-weight:700;font-size:15px;padding:0 22px;min-height:50px;cursor:pointer;color:#101010" style-hover="border-color:#101010">Edit Journey</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-labelledby="services-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px) 0">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px;margin-bottom:36px">
+        <div>
+          <p style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:0.14em;color:#8a6a1f">OUR SERVICES</p>
+          <h2 id="services-title" style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.03em;max-width:640px;text-wrap:balance">Transport for every journey, in Den Bosch and beyond</h2>
+        </div>
+        <p style="margin:0;max-width:380px;color:#686868;font-size:15px;line-height:1.6">From a short trip across town to a group outing or your wedding day. Every service can be booked online, by phone or via WhatsApp.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px">
+        <article id="local-card" style="background:#FFFFFF;border:1px solid #E7E7E7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <div role="img" aria-label="Photo: taxi in a Den Bosch city street" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">photo: taxi in Den Bosch</span></div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <h3 style="margin:0;font-size:21px;font-weight:800;letter-spacing:-0.02em">Local Taxi Services</h3>
+            <p style="margin:0;color:#686868;font-size:15px;line-height:1.6;flex:1">Taxi journeys within Den Bosch and the surrounding area, with convenient booking and experienced drivers who speak Dutch and English.</p>
+            <a href="#local" style="font-weight:700;font-size:15px;margin-top:6px">Local taxi service →</a>
+          </div>
+        </article>
+        <article style="background:#FFFFFF;border:1px solid #E7E7E7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <div role="img" aria-label="Photo: taxi at an airport departure hall" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">photo: airport departures</span></div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <h3 style="margin:0;font-size:21px;font-weight:800;letter-spacing:-0.02em">Airport Transfers</h3>
+            <p style="margin:0;color:#686868;font-size:15px;line-height:1.6;flex:1">Pre-booked, door-to-door transport to and from the airport, for holidays and business trips alike.</p>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px">
+              <a href="#airport" style="font-weight:700;font-size:15px">Eindhoven Airport →</a>
+              <a href="#airport" style="font-weight:700;font-size:15px">Amsterdam Schiphol Airport →</a>
+            </div>
+          </div>
+        </article>
+        <article id="business" style="background:#FFFFFF;border:1px solid #E7E7E7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <div role="img" aria-label="Photo: business traveller stepping into a black Mercedes" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">photo: executive transport</span></div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <h3 style="margin:0;font-size:21px;font-weight:800;letter-spacing:-0.02em">Business &amp; Executive Transport</h3>
+            <p style="margin:0;color:#686868;font-size:15px;line-height:1.6">Professional transport for appointments, corporate travel and executive journeys, with qualified drivers in a Mercedes E-Class, Mercedes V-Class or VW Sharan.</p>
+            <p style="margin:0;color:#686868;font-size:15px;line-height:1.6;flex:1">Pay in cash or by card, or ask about billing on account.</p>
+            <a href="#contact" style="font-weight:700;font-size:15px;margin-top:6px">Enquire about business travel →</a>
+          </div>
+        </article>
+        <article id="weddings" style="background:#FFFFFF;border:1px solid #E7E7E7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <div role="img" aria-label="Photo: decorated car for a wedding" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">photo: wedding transport</span></div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <h3 style="margin:0;font-size:21px;font-weight:800;letter-spacing:-0.02em">Wedding &amp; Event Transport</h3>
+            <p style="margin:0;color:#686868;font-size:15px;line-height:1.6;flex:1">Transport for your wedding day or special occasion, from collecting the wedding party to taking guests to the reception. Tell us what you need and we'll plan it with you.</p>
+            <a href="#contact" style="font-weight:700;font-size:15px;margin-top:6px">Plan your event transport →</a>
+          </div>
+        </article>
+        <article id="groups" style="background:#FFFFFF;border:1px solid #E7E7E7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <div role="img" aria-label="Photo: Mercedes V-Class taxi van" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">photo: taxi van / V-Class</span></div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <h3 style="margin:0;font-size:21px;font-weight:800;letter-spacing:-0.02em">Group Transport &amp; Taxi Vans</h3>
+            <p style="margin:0;color:#686868;font-size:15px;line-height:1.6;flex:1">Spacious vehicles such as the Mercedes Vito and V-Class for company outings, family celebrations, a group trip to Schiphol or a ride home after a party.</p>
+            <a href="#book" style="font-weight:700;font-size:15px;margin-top:6px">Book group transport →</a>
+          </div>
+        </article>
+        <article id="tours" style="background:#FFFFFF;border:1px solid #E7E7E7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column">
+          <div role="img" aria-label="Photo: historic centre of Den Bosch" style="aspect-ratio:16/10;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">photo: Den Bosch old town</span></div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <h3 style="margin:0;font-size:21px;font-weight:800;letter-spacing:-0.02em">Private Tours</h3>
+            <p style="margin:0;color:#686868;font-size:15px;line-height:1.6;flex:1">Discover the history, culture and hidden corners of Den Bosch and the surrounding area with an experienced driver who knows the city, on a route shaped around your interests.</p>
+            <a href="#contact" style="font-weight:700;font-size:15px;margin-top:6px">Ask about a private tour →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE -->
+    <section id="about" aria-labelledby="why-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(12px,3vw,40px) 0">
+      <div style="background:#101010;color:#FFFFFF;border-radius:18px;padding:clamp(28px,5vw,64px)">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:20px 64px;align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+          <div>
+            <p style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:0.14em;color:#E5B957">WHY TAXI DEN BOSCH</p>
+            <h2 id="why-title" style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.03em">A Better Way to Travel</h2>
+          </div>
+          <p style="margin:0;color:#BDBDBD;font-size:16px;line-height:1.65">Taxi Den Bosch (Snel Taxi) provides taxi transport from 's-Hertogenbosch to destinations across the Netherlands and beyond, for both personal and business travel.</p>
+        </div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:#2a2a2a;border:1px solid #2a2a2a;border-radius:12px;overflow:hidden">
+          <li style="background:#101010;padding:28px;display:flex;flex-direction:column;gap:10px">
+            <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;border:1px solid #E5B957;color:#E5B957;display:grid;place-items:center;font-weight:800;font-size:13px">24/7</span>
+            <h3 style="margin:6px 0 0;font-size:18px;font-weight:800">Available 24/7</h3>
+            <p style="margin:0;color:#BDBDBD;font-size:15px;line-height:1.6">An early flight or a late night out: you can book a taxi at any hour, seven days a week.</p>
+          </li>
+          <li style="background:#101010;padding:28px;display:flex;flex-direction:column;gap:10px">
+            <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;border:1px solid #E5B957;color:#E5B957;display:grid;place-items:center;font-weight:800;font-size:13px">02</span>
+            <h3 style="margin:6px 0 0;font-size:18px;font-weight:800">Professional Drivers</h3>
+            <p style="margin:0;color:#BDBDBD;font-size:15px;line-height:1.6">Trained, experienced and well-presented drivers who speak Dutch and English and are happy to help with your luggage.</p>
+          </li>
+          <li style="background:#101010;padding:28px;display:flex;flex-direction:column;gap:10px">
+            <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;border:1px solid #E5B957;color:#E5B957;display:grid;place-items:center;font-weight:800;font-size:13px">03</span>
+            <h3 style="margin:6px 0 0;font-size:18px;font-weight:800">Comfortable Vehicles</h3>
+            <p style="margin:0;color:#BDBDBD;font-size:15px;line-height:1.6">Clean, well-maintained cars from Mercedes and Volkswagen, including the spacious Mercedes V-Class and Vito.</p>
+          </li>
+          <li style="background:#101010;padding:28px;display:flex;flex-direction:column;gap:10px">
+            <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;border:1px solid #E5B957;color:#E5B957;display:grid;place-items:center;font-weight:800;font-size:13px">04</span>
+            <h3 style="margin:6px 0 0;font-size:18px;font-weight:800">Transparent Pricing</h3>
+            <p style="margin:0;color:#BDBDBD;font-size:15px;line-height:1.6">Clear fares with no hidden costs afterwards, and fixed fares to many destinations in the Netherlands, Belgium and Germany.</p>
+          </li>
+          <li style="background:#101010;padding:28px;display:flex;flex-direction:column;gap:10px">
+            <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;border:1px solid #E5B957;color:#E5B957;display:grid;place-items:center;font-weight:800;font-size:13px">05</span>
+            <h3 style="margin:6px 0 0;font-size:18px;font-weight:800">Convenient Booking</h3>
+            <p style="margin:0;color:#BDBDBD;font-size:15px;line-height:1.6">Book or enquire through the website, by phone on 073 234 0600, via WhatsApp or with the Snel Taxi app.</p>
+          </li>
+          <li style="background:#101010;padding:28px;display:flex;flex-direction:column;gap:10px">
+            <span aria-hidden="true" style="width:40px;height:40px;border-radius:10px;border:1px solid #E5B957;color:#E5B957;display:grid;place-items:center;font-weight:800;font-size:13px">06</span>
+            <h3 style="margin:6px 0 0;font-size:18px;font-weight:800">Personal &amp; Business Travel</h3>
+            <p style="margin:0;color:#BDBDBD;font-size:15px;line-height:1.6">Local journeys, airport transfers, business travel and group transport, all arranged by one local company.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- AIRPORT -->
+    <section id="airport" aria-labelledby="airport-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px) 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(28px,5vw,64px);align-items:center">
+        <div role="img" aria-label="Photo: driver loading suitcases into the boot" style="aspect-ratio:5/4;border-radius:14px;background:repeating-linear-gradient(135deg,#1b1b1b 0 14px,#151515 14px 28px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6b6b6b">photo: driver with luggage</span></div>
+        <div>
+          <p style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:0.14em;color:#8a6a1f">AIRPORT TRANSFERS</p>
+          <h2 id="airport-title" style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.03em;text-wrap:balance">Comfortable, Reliable Airport Transfers</h2>
+          <p style="margin:18px 0 0;color:#686868;font-size:16px;line-height:1.65;max-width:540px">Plan your airport journey with pre-booked taxi transport from Den Bosch. Arrange a comfortable journey to or from Eindhoven Airport or Amsterdam Schiphol and book ahead for your travel schedule.</p>
+          <p style="margin:12px 0 28px;color:#686868;font-size:16px;line-height:1.65;max-width:540px">Airport journeys are door to door, with fixed fares available for airport routes. Contact us for a fare for your trip.</p>
+          <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #E7E7E7">
+            <li style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid #E7E7E7;flex-wrap:wrap"><span style="font-weight:800;font-size:18px">Eindhoven Airport</span><a href="#book" style="font-weight:700;font-size:14px">Plan this journey →</a></li>
+            <li style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid #E7E7E7;flex-wrap:wrap"><span style="font-weight:800;font-size:18px">Amsterdam Schiphol Airport</span><a href="#book" style="font-weight:700;font-size:14px">Plan this journey →</a></li>
+            <li style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid #E7E7E7;flex-wrap:wrap"><span style="font-weight:800;font-size:18px">Maastricht Airport</span><a href="#book" style="font-weight:700;font-size:14px">Plan this journey →</a></li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+            <a href="#book" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:#101010;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:16px 24px;border-radius:8px" style-hover="background:#2a2a2a;color:#FFFFFF">Book an Airport Transfer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCAL -->
+    <section id="local" aria-labelledby="local-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px) 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(28px,5vw,64px);align-items:center">
+        <div style="order:0">
+          <p style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:0.14em;color:#8a6a1f">LOCAL TAXI</p>
+          <h2 id="local-title" style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.03em;text-wrap:balance">Your Local Taxi in Den Bosch</h2>
+          <p style="margin:18px 0 0;color:#686868;font-size:16px;line-height:1.65;max-width:540px">Whether you're travelling across Den Bosch, heading to a hotel or station, or arranging a journey elsewhere in the Netherlands, Taxi Den Bosch provides convenient transport for personal and business travel.</p>
+          <p style="margin:12px 0 28px;color:#686868;font-size:16px;line-height:1.65;max-width:540px">Our drivers are punctual, experienced and know the area well. Fares are clear upfront, with no extra costs afterwards.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px">
+            <a href="#book" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:#101010;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:16px 24px;border-radius:8px" style-hover="background:#2a2a2a;color:#FFFFFF">Book a Local Taxi</a>
+            <a href="tel:+31732340600" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border:1px solid #CFCFCF;color:#101010;text-decoration:none;font-weight:700;font-size:15px;padding:16px 24px;border-radius:8px" style-hover="border-color:#101010;color:#101010">Call 073 234 0600</a>
+          </div>
+        </div>
+        <div role="img" aria-label="Photo: taxi outside 's-Hertogenbosch Central Station" style="aspect-ratio:5/4;border-radius:14px;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:16px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">photo: taxi at Den Bosch station</span></div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" aria-labelledby="reviews-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px) 0">
+      <p style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:0.14em;color:#8a6a1f">CUSTOMER REVIEWS</p>
+      <h2 id="reviews-title" style="margin:0 0 28px;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.03em">What Our Passengers Say</h2>
+      <div style="border:1px dashed #CFCFCF;white-space:nowrap;border-radius:14px;padding:clamp(24px,4vw,40px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;background:#FFFFFF">
+        <p style="margin:0;max-width:640px;color:#686868;font-size:15px;line-height:1.6"><strong style="color:#101010">Reviews pending verification.</strong> Customer reviews will be shown here once genuine, attributable testimonials have been confirmed with Taxi Den Bosch.</p>
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">dev note · not shown in production</span>
+      </div>
+    </section>
+
+    <!-- APP -->
+    <section id="app" aria-labelledby="app-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px) 0">
+      <div style="background:#FFFFFF;border:1px solid #E7E7E7;border-radius:18px;padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px;align-items:center">
+        <div>
+          <p style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:0.14em;color:#8a6a1f">SNEL TAXI APP</p>
+          <h2 id="app-title" style="margin:0;font-size:clamp(26px,3vw,38px);line-height:1.15;font-weight:800;letter-spacing:-0.03em;text-wrap:balance">Book your next ride with the Snel Taxi Den Bosch app</h2>
+          <p style="margin:16px 0 24px;color:#686868;font-size:16px;line-height:1.65;max-width:520px">Prefer booking from your phone? Download the Snel Taxi app to arrange your taxi journey.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+            <a href="https://apps.apple.com/app/snel-taxi/id6476443399" target="_blank" rel="noopener" style="white-space:nowrap;background:#101010;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:15px;padding:14px 22px;border-radius:8px;display:flex;flex-direction:column;line-height:1.2" style-hover="background:#2a2a2a;color:#FFFFFF"><span style="font-size:11px;font-weight:600;color:#BDBDBD">Download on the</span><span>App Store</span></a>
+            <span style="font-size:13px;color:#686868">Google Play link to be confirmed</span>
+          </div>
+        </div>
+        <div role="img" aria-label="Screenshot: Snel Taxi app on a phone" style="aspect-ratio:16/10;border-radius:12px;background:repeating-linear-gradient(135deg,#ECEBE7 0 12px,#E4E3DE 12px 24px);display:flex;align-items:flex-end;padding:14px"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8b8b86">app screenshot</span></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faq-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(20px,4vw,40px) 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,64px);align-items:start">
+        <div>
+          <p style="margin:0 0 12px;font-size:12px;font-weight:800;letter-spacing:0.14em;color:#8a6a1f">FREQUENTLY ASKED QUESTIONS</p>
+          <h2 id="faq-title" style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.03em">Good to Know</h2>
+          <p style="margin:16px 0 0;color:#686868;font-size:15px;line-height:1.6;max-width:380px">Can't find your answer? Call <a href="tel:+31732340600" style="font-weight:700">073 234 0600</a> or send us a <a href="https://wa.me/31644479990" style="font-weight:700">WhatsApp message</a>.</p>
+        </div>
+        <div style="border-top:1px solid #E7E7E7">
+          <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+            <div style="border-bottom:1px solid #E7E7E7">
+              <h3 style="margin:0">
+                <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" aria-controls="{{ q.pid }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;background:none;border:0;text-align:left;font-size:17px;font-weight:700;color:#101010;cursor:pointer;min-height:44px">
+                  <span>{{ q.q }}</span>
+                  <span aria-hidden="true" style="flex:none;width:28px;height:28px;border-radius:50%;border:1px solid #E7E7E7;display:grid;place-items:center;font-size:18px;font-weight:500;color:#8a6a1f">{{ q.sign }}</span>
+                </button>
+              </h3>
+              <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+                <p id="{{ q.pid }}" style="margin:0 0 22px;color:#686868;font-size:15px;line-height:1.65;max-width:580px">{{ q.a }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA + CONTACT -->
+    <section id="contact" aria-labelledby="contact-title" style="max-width:1240px;margin:0 auto;padding:clamp(72px,9vw,120px) clamp(12px,3vw,40px)">
+      <div style="background:#101010;color:#FFFFFF;border-radius:18px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px">
+        <div>
+          <h2 id="contact-title" style="margin:0;font-size:clamp(30px,3.6vw,46px);line-height:1.1;font-weight:800;letter-spacing:-0.03em;text-wrap:balance">Ready for Your Next Journey?</h2>
+          <p style="margin:18px 0 30px;color:#BDBDBD;font-size:16px;line-height:1.65;max-width:480px">Book your next taxi journey with Taxi Den Bosch. Get in touch to arrange local transport, an airport transfer, or a journey for business or leisure.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px">
+            <a href="#book" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:#E5B957;color:#101010;text-decoration:none;font-weight:700;font-size:16px;padding:17px 26px;border-radius:8px" style-hover="background:#F0CB73;color:#101010">Book a Taxi</a>
+            <a href="tel:+31732340600" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border:1px solid #4a4a4a;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:16px;padding:17px 26px;border-radius:8px" style-hover="border-color:#FFFFFF;color:#FFFFFF">Call Us</a>
+            <a href="https://wa.me/31644479990" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border:1px solid #4a4a4a;color:#FFFFFF;text-decoration:none;font-weight:700;font-size:16px;padding:17px 26px;border-radius:8px" style-hover="border-color:#FFFFFF;color:#FFFFFF">WhatsApp</a>
+          </div>
+        </div>
+        <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:28px 32px;align-content:start">
+          <div><dt style="font-size:12px;font-weight:800;letter-spacing:0.1em;color:#E5B957">TELEPHONE</dt><dd style="margin:8px 0 0;font-size:17px;font-weight:700"><a href="tel:+31732340600" style="color:#FFFFFF">073 234 0600</a></dd></div>
+          <div><dt style="font-size:12px;font-weight:800;letter-spacing:0.1em;color:#E5B957">WHATSAPP</dt><dd style="margin:8px 0 0;font-size:17px;font-weight:700"><a href="https://wa.me/31644479990" style="color:#FFFFFF">+31 6 4447 9990</a></dd></div>
+          <div><dt style="font-size:12px;font-weight:800;letter-spacing:0.1em;color:#E5B957">EMAIL</dt><dd style="margin:8px 0 0;font-size:15px;font-weight:700;word-break:break-word"><a href="mailto:Sneltaxidenbosch@hotmail.com" style="color:#FFFFFF">Sneltaxidenbosch@hotmail.com</a></dd></div>
+          <div><dt style="font-size:12px;font-weight:800;letter-spacing:0.1em;color:#E5B957">OPENING HOURS</dt><dd style="margin:8px 0 0;font-size:17px;font-weight:700">24 hours a day, 7 days a week</dd></div>
+          <div><dt style="font-size:12px;font-weight:800;letter-spacing:0.1em;color:#E5B957">HEAD OFFICE</dt><dd style="margin:8px 0 0;font-size:17px;font-weight:700;line-height:1.5">Klokkenlaan<br>5231 BE Den Bosch</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer style="border-top:1px solid #E7E7E7;background:#FFFFFF">
+    <div style="max-width:1240px;margin:0 auto;padding:56px clamp(20px,4vw,40px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:36px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="width:34px;height:34px;border-radius:8px;background:#101010;color:#E5B957;display:grid;place-items:center;font-weight:800;font-size:14px">TDB</span>
+          <span style="font-weight:800;font-size:16px;letter-spacing:0.04em;white-space:nowrap">TAXI DEN BOSCH</span>
+        </div>
+        <p style="margin:0;color:#686868;font-size:14px;line-height:1.6">Snel Taxi Den Bosch. Taxi transport 24 hours a day, 7 days a week.</p>
+      </div>
+      <nav aria-label="Services" style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+        <p style="margin:0 0 4px;font-weight:800;font-size:13px">Services</p>
+        <a href="#services" style="text-decoration:none;color:#686868" style-hover="color:#101010">All Services</a>
+        <a href="#airport" style="text-decoration:none;color:#686868" style-hover="color:#101010">Airport Transfers</a>
+        <a href="#business" style="text-decoration:none;color:#686868" style-hover="color:#101010">Business Transport</a>
+        <a href="#groups" style="text-decoration:none;color:#686868" style-hover="color:#101010">Group Transport</a>
+        <a href="#weddings" style="text-decoration:none;color:#686868" style-hover="color:#101010">Weddings &amp; Events</a>
+        <a href="#tours" style="text-decoration:none;color:#686868" style-hover="color:#101010">Private Tours</a>
+      </nav>
+      <nav aria-label="Company" style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+        <p style="margin:0 0 4px;font-weight:800;font-size:13px">Company</p>
+        <a href="#about" style="text-decoration:none;color:#686868" style-hover="color:#101010">About</a>
+        <a href="#contact" style="text-decoration:none;color:#686868" style-hover="color:#101010">Contact</a>
+        <a href="#book" style="text-decoration:none;color:#686868" style-hover="color:#101010">Book a Taxi</a>
+        <a href="https://www.taxidenbosch.eu/help-center" style="text-decoration:none;color:#686868" style-hover="color:#101010">Help Center</a>
+        <a href="https://www.taxidenbosch.eu/privacy-and-policy" style="text-decoration:none;color:#686868" style-hover="color:#101010">Privacy Policy</a>
+        <a href="https://www.taxidenbosch.eu/terms-of-use" style="text-decoration:none;color:#686868" style-hover="color:#101010">Terms of Use</a>
+      </nav>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+        <p style="margin:0 0 4px;font-weight:800;font-size:13px">Contact</p>
+        <a href="tel:+31732340600" style="text-decoration:none;color:#101010;font-weight:700">073 234 0600</a>
+        <a href="https://wa.me/31644479990" style="text-decoration:none;color:#686868" style-hover="color:#101010">WhatsApp +31 6 4447 9990</a>
+        <a href="mailto:Sneltaxidenbosch@hotmail.com" style="text-decoration:none;color:#686868;word-break:break-word" style-hover="color:#101010">Sneltaxidenbosch@hotmail.com</a>
+        <span style="color:#686868">Klokkenlaan, 5231 BE Den Bosch</span>
+        <span style="color:#686868">Open 24/7</span>
+      </div>
+    </div>
+    <div style="max-width:1240px;margin:0 auto;padding:20px clamp(20px,4vw,40px) 32px;border-top:1px solid #E7E7E7;font-size:13px;color:#686868">© {{ year }} Taxi Den Bosch</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    w: typeof window !== 'undefined' ? window.innerWidth : 1440,
+    menu: false,
+    f: { trip: 'oneway', pickup: '', dest: '', hasStop: false, stop: '', date: '', time: '', rdate: '', rtime: '', pax: '1', luggage: 'no' },
+    errors: {}, status: 'idle', result: null, faqOpen: 0, loc: 'idle',
+  };
+
+  // MOCK booking service — frontend only. Replace `submit` with the real API
+  // client once the client's API documentation is available. Keep base URLs and
+  // keys in environment config, never in source.
+  bookingService = {
+    mode: 'mock',
+    submit: (data) => new Promise((res) => setTimeout(() => res({ ok: true, mock: true, data }), 1100)),
+  };
+
+  componentDidMount() {
+    this._r = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this._r);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); }
+
+  set(k) {
+    return (e) => {
+      const v = e.target.value;
+      this.setState((s) => ({ f: { ...s.f, [k]: v }, errors: { ...s.errors, [k]: null, form: null } }));
+    };
+  }
+  patch(p) { this.setState((s) => ({ f: { ...s.f, ...p } })); }
+
+  useLocation = () => {
+    if (!navigator.geolocation) { this.setState((s) => ({ errors: { ...s.errors, pickup: 'Your browser does not support location access.' } })); return; }
+    this.setState({ loc: 'busy' });
+    navigator.geolocation.getCurrentPosition(
+      (p) => this.setState((s) => ({ loc: 'idle', f: { ...s.f, pickup: 'Current location (' + p.coords.latitude.toFixed(4) + ', ' + p.coords.longitude.toFixed(4) + ')' }, errors: { ...s.errors, pickup: null } })),
+      () => this.setState((s) => ({ loc: 'idle', errors: { ...s.errors, pickup: 'We could not access your location. Please enter an address.' } })),
+      { timeout: 8000 }
+    );
+  };
+
+  validate(f) {
+    const e = {};
+    if (f.pickup.trim().length < 3) e.pickup = 'Please enter a pickup location.';
+    if (f.dest.trim().length < 3) e.dest = 'Please enter a destination.';
+    if (!e.pickup && !e.dest && f.pickup.trim().toLowerCase() === f.dest.trim().toLowerCase())
+      e.dest = 'The destination must differ from the pickup location.';
+    if (f.hasStop && f.stop.trim().length < 3) e.stop = 'Please enter the stop address, or remove the stop.';
+    if (!f.date) e.date = 'Please choose a pickup date.';
+    if (!f.time) e.time = 'Please choose a pickup time.';
+    let t = null;
+    if (f.date && f.time) {
+      t = new Date(f.date + 'T' + f.time);
+      if (isNaN(t)) e.date = 'Please enter a valid date.';
+      else if (t.getTime() < Date.now() + 15 * 60000) e.time = 'Please choose a time at least 15 minutes from now.';
+    }
+    if (f.trip === 'return') {
+      if (!f.rdate) e.rdate = 'Please choose a return date.';
+      if (!f.rtime) e.rtime = 'Please choose a return time.';
+      if (f.rdate && f.rtime && t && !isNaN(t)) {
+        const rt = new Date(f.rdate + 'T' + f.rtime);
+        if (rt <= t) e.rtime = 'The return must be after the outward pickup.';
+      }
+    }
+    return e;
+  }
+
+  submit = async (ev) => {
+    ev.preventDefault();
+    const f = this.state.f;
+    const errors = this.validate(f);
+    if (Object.keys(errors).length) {
+      errors.form = 'Please check the highlighted fields.';
+      this.setState({ errors });
+      return;
+    }
+    this.setState({ status: 'loading', errors: {} });
+    try {
+      const r = await this.bookingService.submit({ ...f, pax: Number(f.pax) });
+      if (!r.ok) throw new Error();
+      this.setState({ status: 'done', result: r.data });
+    } catch {
+      this.setState({ status: 'idle', errors: { form: 'Something went wrong. Please try again or call 073 234 0600.' } });
+    }
+  };
+
+  renderVals() {
+    const { w, menu, f, errors, status, result, faqOpen, loc } = this.state;
+    const wide = w >= 1080;
+    const bc = {}, inv = {};
+    ['pickup', 'dest', 'stop', 'date', 'time', 'rdate', 'rtime'].forEach((k) => { bc[k] = errors[k] ? '#B3261E' : '#E7E7E7'; inv[k] = !!errors[k]; });
+    const seg = (on) => ({ bg: on ? '#FFFFFF' : 'transparent', sh: on ? '0 1px 3px rgba(16,16,16,0.12)' : 'none' });
+    const y = f.luggage === 'yes', ret = f.trip === 'return';
+    const lug = { yes: y, no: !y, yesBg: seg(y).bg, yesSh: seg(y).sh, noBg: seg(!y).bg, noSh: seg(!y).sh };
+    const trip = { one: !ret, ret, oneBg: seg(!ret).bg, oneSh: seg(!ret).sh, retBg: seg(ret).bg, retSh: seg(ret).sh };
+    const d = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    const today = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+    const fmt = (date, time) => new Date(date + 'T' + time).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long' }) + ', ' + time;
+    let r = {};
+    if (result) {
+      r = {
+        pickup: result.pickup + (result.hasStop ? ' (via ' + result.stop + ')' : ''),
+        dest: result.dest,
+        when: fmt(result.date, result.time),
+        trip: result.trip === 'return' ? 'Return · ' + fmt(result.rdate, result.rtime) : 'One-way',
+        paxLug: result.pax + (result.pax === 1 ? ' passenger' : ' passengers') + ' · ' + (result.luggage === 'yes' ? 'with luggage' : 'no luggage'),
+      };
+    }
+    const faqData = [
+      ['How can I book a taxi?', 'Use the booking form on this page, call 073 234 0600, send a WhatsApp message to +31 6 4447 9990, or book through the Snel Taxi app. Online booking on this new website is not yet connected, so please call or WhatsApp us for now.'],
+      ['Can I arrange an airport transfer?', 'Yes. We provide pre-booked transfers to and from Eindhoven Airport and Amsterdam Schiphol Airport, as well as Maastricht Airport. Book ahead so we can plan your journey around your travel schedule.'],
+      ['Is Taxi Den Bosch available around the clock?', 'Yes. We are available 24 hours a day, 7 days a week, including early mornings and late evenings.'],
+      ['Can I book transport for business travel?', 'Yes. We provide business and executive transport with qualified drivers. Journeys can be paid in cash or by card, and billing on account is also possible. Contact us to discuss the options for your company.'],
+      ['Is group transport available?', 'Yes. Our spacious vehicles, such as the Mercedes Vito and V-Class, are suitable for groups of up to 7 passengers, for company outings, family events and other occasions.'],
+      ['How can I enquire about a fixed fare?', 'We offer fixed fares to many destinations in the Netherlands, Belgium and Germany. Call or WhatsApp us with your pickup location, destination and travel time, and we will tell you the fare for your journey.'],
+    ];
+    const faqs = faqData.map(([q, a], i) => ({
+      q, a, open: faqOpen === i, sign: faqOpen === i ? '−' : '+', pid: 'faq-' + i,
+      toggle: () => this.setState((s) => ({ faqOpen: s.faqOpen === i ? -1 : i })),
+    }));
+    return {
+      wide, narrow: !wide, menuOpen: menu, showMobileMenu: menu && !wide,
+      menuLabel: menu ? 'Close' : 'Menu',
+      toggleMenu: () => this.setState((s) => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      f, e: errors, bc, inv, lug, trip, today, returnMin: f.date || today,
+      noStop: !f.hasStop,
+      locLabel: loc === 'busy' ? 'Locating…' : 'Use current location',
+      useLocation: this.useLocation,
+      onPickup: this.set('pickup'), onDest: this.set('dest'), onStop: this.set('stop'), onDate: this.set('date'), onTime: this.set('time'),
+      onRdate: this.set('rdate'), onRtime: this.set('rtime'), onPax: this.set('pax'),
+      toggleStop: () => this.setState((s) => ({ f: { ...s.f, hasStop: !s.f.hasStop, stop: '' }, errors: { ...s.errors, stop: null } })),
+      setOneWay: () => this.patch({ trip: 'oneway' }),
+      setReturn: () => this.patch({ trip: 'return' }),
+      lugYes: () => this.patch({ luggage: 'yes' }),
+      lugNo: () => this.patch({ luggage: 'no' }),
+      swap: () => this.setState((s) => ({ f: { ...s.f, pickup: s.f.dest, dest: s.f.pickup }, errors: {} })),
+      largeGroup: Number(f.pax) >= 5,
+      submit: this.submit,
+      loading: status === 'loading', notLoading: status !== 'loading',
+      showForm: status !== 'done', showDone: status === 'done', r,
+      reset: () => this.setState({ status: 'idle', result: null }),
+      faqs, year: d.getFullYear(),
+    };
+  }
+}
+</script>
+</body>
+</html>
