@@ -1,4 +1,4 @@
-# Taxi Den Bosch — website
+# taxi-den — Taxi Den Bosch website
 
 Production React frontend for the approved **Taxi Den Bosch Homepage v2** design
 (`design-reference/Taxi Den Bosch Homepage v2.dc.html`). Public homepage only:
