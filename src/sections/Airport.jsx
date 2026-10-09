@@ -1,7 +1,7 @@
 import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
-import airportImage from '../assets/images/Airport transfer.png';
+import airportImage from '../assets/images/Airport Transfer.png';
 
 const t = content.airport;
 

@@ -2,7 +2,7 @@ import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
 import localImage from '../assets/images/local.jpg';
-import airportImage from '../assets/images/Airport Transfers.png';
+import airportImage from '../assets/images/Airport transfers.png';
 import businessImage from '../assets/images/business transport.jpg';
 import weddingImage from '../assets/images/Wedding transport.png';
 import groupImage from '../assets/images/Group transport.png';
