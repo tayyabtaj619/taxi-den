@@ -1,12 +1,13 @@
 import { content, contact } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
+import heroImage from '../assets/images/Hero section.png';
 
 const t = content.hero;
 
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <Media image={t.image} tone="dark" className="hero__media" eager />
+      <Media image={{ ...t.image, src: heroImage }} tone="dark" className="hero__media" eager />
       <div className="hero__shade" aria-hidden="true" />
       <div className="hero__inner">
         <p className="hero__eyebrow">{t.eyebrow}</p>

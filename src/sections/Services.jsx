@@ -1,8 +1,22 @@
 import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
+import localImage from '../assets/images/local.jpg';
+import airportImage from '../assets/images/Airport Transfers.png';
+import businessImage from '../assets/images/business transport.jpg';
+import weddingImage from '../assets/images/Wedding transport.png';
+import groupImage from '../assets/images/Group transport.png';
+import toursImage from '../assets/images/Private tours in Den Bosch.jpg';
 
 const t = content.services;
+const serviceImages = {
+  'local-card': localImage,
+  'airport-card': airportImage,
+  business: businessImage,
+  weddings: weddingImage,
+  groups: groupImage,
+  tours: toursImage,
+};
 
 function ServiceCard({ item }) {
   return (
@@ -38,7 +52,10 @@ export default function Services() {
       </div>
       <div className="cards">
         {t.items.map((item) => (
-          <ServiceCard key={item.id} item={item} />
+          <ServiceCard
+            key={item.id}
+            item={{ ...item, image: { ...item.image, src: serviceImages[item.id] } }}
+          />
         ))}
       </div>
     </section>

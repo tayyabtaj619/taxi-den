@@ -1,6 +1,7 @@
 import { content, contact } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
+import localTaxiImage from '../assets/images/local taxi.jpg';
 
 const t = content.local;
 
@@ -21,7 +22,7 @@ export default function LocalTaxi() {
             </a>
           </div>
         </div>
-        <Media image={t.image} className="split__media" />
+        <Media image={{ ...t.image, src: localTaxiImage }} className="split__media" />
       </div>
     </section>
   );

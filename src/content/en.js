@@ -52,7 +52,6 @@ const en = {
       "Trained, professional drivers",
     ],
     image: {
-      src: "../src/assets/images/Hero section.png",
       alt: "Black taxi at night in the centre of Den Bosch",
       caption: "hero photo: taxi / executive transport, 2400×1400",
     },
@@ -150,7 +149,6 @@ const en = {
         ],
         links: [{ href: "#local", label: "Local taxi service →" }],
         image: {
-          src: "../src/assets/images/local.jpg",
           alt: "Taxi in a Den Bosch city street",
           caption: "photo: taxi in Den Bosch",
         },
@@ -166,7 +164,6 @@ const en = {
           { href: "#airport", label: "Amsterdam Schiphol Airport →" },
         ],
         image: {
-          src: "../src/assets/images/Airport Transfers.png",
           alt: "Taxi at an airport departure hall",
           caption: "photo: airport departures",
         },
@@ -180,7 +177,6 @@ const en = {
         ],
         links: [{ href: "#contact", label: "Enquire about business travel →" }],
         image: {
-          src: "../src/assets/images/business transport.jpg",
           alt: "Business traveller stepping into a black Mercedes",
           caption: "photo: executive transport",
         },
@@ -193,7 +189,6 @@ const en = {
         ],
         links: [{ href: "#contact", label: "Plan your event transport →" }],
         image: {
-          src: "../src/assets/images/Wedding transport.png",
           alt: "Decorated car for a wedding",
           caption: "photo: wedding transport",
         },
@@ -206,7 +201,6 @@ const en = {
         ],
         links: [{ href: "#book", label: "Book group transport →" }],
         image: {
-          src: "../src/assets/images/Group transport.png",
           alt: "Mercedes V-Class taxi van",
           caption: "photo: taxi van / V-Class",
         },
@@ -219,7 +213,6 @@ const en = {
         ],
         links: [{ href: "#contact", label: "Ask about a private tour →" }],
         image: {
-          src: "../src/assets/images/Private tours in Den Bosch.jpg",
           alt: "Historic centre of Den Bosch",
           caption: "photo: Den Bosch old town",
         },
@@ -281,7 +274,6 @@ const en = {
     routeCta: "Plan this journey →",
     cta: "Book an Airport Transfer",
     image: {
-      src: "../src/assets/images/Airport transfer.png",
       alt: "Driver loading suitcases into the boot",
       caption: "photo: driver with luggage",
     },
@@ -297,7 +289,6 @@ const en = {
     ctaBook: "Book a Local Taxi",
     ctaCall: `Call ${contact.phoneDisplay}`,
     image: {
-      src: "../src/assets/images/local taxi.jpg",
       alt: "Taxi outside 's-Hertogenbosch Central Station",
       caption: "photo: taxi at Den Bosch station",
     },
@@ -324,7 +315,6 @@ const en = {
     googlePlay: "Google Play",
     googlePlayPending: "Google Play link to be confirmed",
     image: {
-      src: "../src/assets/images/Taxi booking app.png",
       alt: "Snel Taxi app on a phone",
       caption: "app screenshot",
     },
