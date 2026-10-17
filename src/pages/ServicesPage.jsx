@@ -5,6 +5,12 @@ import CtaBand from '../components/CtaBand.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
 import Icon from '../components/ui/Icon.jsx';
 import { pagePath } from '../hooks/useHashRoute.js';
+import localTaxiImage from '../images/local-taxi.webp';
+import airportTransfersImage from '../images/airport-transfers.webp';
+import businessTransportImage from '../images/business-transport.webp';
+import weddingTransportImage from '../images/wedding-transport.webp';
+import groupTransportImage from '../images/group-transport.webp';
+import privateToursImage from '../images/private-tours.webp';
 
 const t = content.pages.services;
 
@@ -18,23 +24,30 @@ function actionFor(item) {
   return { href: '#book', label: t.actions.book, button: true };
 }
 
+function service(slug) {
+  return content.services.items.find((item) => item.slug === slug);
+}
+
 export default function ServicesPage() {
+  const local = service('local');
+  const airport = service('airport');
+  const business = service('business');
+  const events = service('events');
+  const groups = service('groups');
+  const tours = service('tours');
+
   return (
     <PageLayout current="services">
-      <PageHero id="services-page-title" eyebrow={t.hero.eyebrow} title={t.hero.title} body={t.hero.body} image={t.hero.image} size="medium" />
+      <PageHero id="services-page-title" eyebrow={t.hero.eyebrow} title={t.hero.title} body={t.hero.body} alt={t.hero.imageAlt} size="medium" />
 
       <section className="container section services-page" aria-label={t.gridLabel}>
         <div className="cards cards--services">
-          {content.services.items.map((item) => (
-            <ServiceCard
-              key={item.slug}
-              id={`service-${item.slug}`}
-              item={item}
-              headingLevel={2}
-              tags={t.tags[item.slug]}
-              links={[actionFor(item)]}
-            />
-          ))}
+          <ServiceCard id="service-local" item={local} src={localTaxiImage} headingLevel={2} tags={t.tags.local} links={[actionFor(local)]} />
+          <ServiceCard id="service-airport" item={airport} src={airportTransfersImage} headingLevel={2} tags={t.tags.airport} links={[actionFor(airport)]} />
+          <ServiceCard id="service-business" item={business} src={businessTransportImage} headingLevel={2} tags={t.tags.business} links={[actionFor(business)]} />
+          <ServiceCard id="service-events" item={events} src={weddingTransportImage} headingLevel={2} tags={t.tags.events} links={[actionFor(events)]} />
+          <ServiceCard id="service-groups" item={groups} src={groupTransportImage} headingLevel={2} tags={t.tags.groups} links={[actionFor(groups)]} />
+          <ServiceCard id="service-tours" item={tours} src={privateToursImage} headingLevel={2} tags={t.tags.tours} links={[actionFor(tours)]} />
         </div>
       </section>
 

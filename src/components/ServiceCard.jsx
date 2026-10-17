@@ -6,12 +6,12 @@ import Icon from './ui/Icon.jsx';
  * one or more actions. Used by the homepage Services section and the
  * Services page, so both stay identical in structure.
  */
-export default function ServiceCard({ item, id, links, tags, headingLevel = 3 }) {
+export default function ServiceCard({ item, id, links, tags, headingLevel = 3, src, alt }) {
   const Heading = `h${headingLevel}`;
   const actions = links || item.links;
   return (
     <article id={id ?? item.id} className="card">
-      <Media image={item.image} className="card__media" sizes="(min-width: 1080px) 400px, (min-width: 720px) 50vw, 100vw" />
+      <Media src={src} alt={alt || item.imageAlt || ''} className="card__media" />
       <div className="card__body">
         <Heading className="card__title">{item.title}</Heading>
         {item.body.map((p) => (

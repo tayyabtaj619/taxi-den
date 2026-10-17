@@ -12,7 +12,7 @@ const t = content.pages.about;
 export default function AboutPage() {
   return (
     <PageLayout current="about">
-      <PageHero id="about-title" eyebrow={t.hero.eyebrow} title={t.hero.title} body={t.hero.body} image={t.hero.image}>
+      <PageHero id="about-title" eyebrow={t.hero.eyebrow} title={t.hero.title} body={t.hero.body} alt={t.hero.imageAlt}>
         <a href="#book" className="btn btn--lg btn--gold">
           {t.hero.primary}
           <Icon name="arrowRight" />
@@ -64,11 +64,7 @@ export default function AboutPage() {
         <div className="photo-pair">
           {t.photos.map((ph) => (
             <figure key={ph.caption} className="photo">
-              <Media
-                image={ph.image}
-                className="photo__media"
-                sizes="(min-width: 900px) 600px, 100vw"
-              />
+              <Media alt={ph.imageAlt} className="photo__media" />
               <figcaption className="photo__caption">{ph.caption}</figcaption>
             </figure>
           ))}

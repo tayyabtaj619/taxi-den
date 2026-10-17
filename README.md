@@ -11,7 +11,7 @@ Requires Node.js 18+ (tested on Node 22).
 ```bash
 npm install        # install dependencies
 npm run dev        # dev server at http://localhost:5173
-npm run check:assets  # verify every image.src points to a real file
+npm run check:assets  # verify every image import points to a real file
 npm run build      # asset check, then production build into dist/
 npm run preview    # serve the production build locally
 ```
@@ -54,13 +54,13 @@ own document title. After in-app navigation, focus moves to the new page's
 design-reference/           Approved v2 homepage design (sections below the hero)
 public/
   favicon.svg
-  images/                   Every image the site serves (see "Images" below)
 assets/originals/           Untouched original image files (archive, not deployed)
-scripts/check-assets.mjs    Build-time image path check
+scripts/check-assets.mjs    Build-time check that image imports exist
 src/
+  images/                   Image files imported by components (see "Images")
   App.jsx                   Hash router: homepage or booking page
   config.js                 Reads VITE_* env vars
-  content/en.js             ALL copy AND image paths (image: { src, alt })
+  content/en.js             ALL copy, including image alt text (imageAlt)
   data/vehicles.js          Vehicle classes + passenger capacity (confirm with client)
   lib/
     booking.js              Initial state, per-step validation, request mapping
@@ -228,63 +228,65 @@ confirms it.
 
 ## Images
 
-**One rule: every image is a file in `public/images/`, referenced by a plain
-path in the content file next to the copy it belongs to.** There are no image
-imports in components and no lookup tables.
+**Each component imports the photo it renders from `src/images/`.** Vite
+bundles and fingerprints that file. Alt text stays in `content/en.js` as
+`imageAlt`, because it is translated copy. There is no image registry and no
+image path in the content file.
 
-```js
-// src/content/en.js
-hero: {
-  title: 'Reliable Taxi Service. Whenever You Need It.',
-  image: {
-    src: '/images/hero/home-hero.webp',
-    alt: 'Black Mercedes taxi on a square in Den Bosch at sunset',
-    position: 'center 55%', // optional: crop focus (CSS object-position)
-  },
-},
+```jsx
+// src/sections/Hero.jsx
+import Media from '../components/ui/Media.jsx';
+import heroImage from '../images/home-hero.webp';
+
+<Media
+  src={heroImage}
+  alt={t.imageAlt}
+  tone="dark"
+  className="hero__media"
+  eager
+/>
 ```
 
-`Media.jsx` renders `image.src` as is, adding Vite's `base` if the site is
-deployed under a sub-path.
+`src/images/home-hero.webp` is a module import, not a browser URL. Do not
+write `src="/src/images/home-hero.webp"`.
 
 ### Replacing an image
 
-1. Put the new file in the right folder under `public/images/`, named in
-   lowercase with hyphens, e.g. `public/images/services/airport-transfers.webp`.
-2. Change `image.src` (and `alt`, if the picture changed) in `src/content/en.js`.
-3. Run `npm run build`. The asset check runs first and fails if a path is
-   wrong, including wrong letter case.
+1. Put the new file in `src/images/`, named in lowercase with hyphens.
+2. Change the import filename in the component that shows it.
+3. If the picture changed, update `imageAlt` in `src/content/en.js`.
+4. Run `npm run build`. The asset check runs first and fails if an import
+   points at a missing file, including wrong letter case.
 
-No other file needs to change. An empty `src: ''` shows the design's
-placeholder slot. During development a broken path is outlined in red with
-its path, and in every environment it's logged as an error, never silently
-hidden.
+Leaving `src` off `<Media>` shows the design's placeholder slot. During
+development a broken file is outlined in red, and in every environment it is
+logged as an error, never silently hidden.
 
 ### Folder structure and where each image is used
 
 ```
-public/images/
-  hero/home-hero.webp                         Homepage hero
-  services/local-taxi.webp                    Service card: Local taxi  (home + Services page)
-  services/airport-transfers.webp             Service card: Airport transfers
-  services/business-transport.webp            Service card: Business & executive
-  services/wedding-transport.webp             Service card: Weddings & events
-  services/group-transport.webp               Service card: Group transport & taxi vans
-  services/private-tours.webp                 Service card: Private tours
-  sections/airport-transfers-feature.webp     Homepage: Airport transfers section
-  sections/local-taxi-feature.webp            Homepage: Local taxi section
-  app/booking-app.webp                        Homepage: Snel Taxi app section
-  library/city-at-night.webp                  not used yet (e.g. a page hero)
-  library/eindhoven-airport.webp              not used yet
-  library/schiphol-airport.webp               not used yet
+src/images/
+  home-hero.webp                    Homepage hero (sections/Hero.jsx)
+  local-taxi.webp                   Service card: Local taxi (home + Services page)
+  airport-transfers.webp            Service card: Airport transfers
+  business-transport.webp           Service card: Business & executive
+  wedding-transport.webp            Service card: Weddings & events
+  group-transport.webp              Service card: Group transport & taxi vans
+  private-tours.webp                Service card: Private tours
+  airport-transfers-feature.webp    Homepage: Airport transfers section
+  local-taxi-feature.webp           Homepage: Local taxi section
+  booking-app.webp                  Homepage: Snel Taxi app section
+  city-at-night.webp                available, not imported
+  eindhoven-airport.webp            available, not imported
+  schiphol-airport.webp             available, not imported
 ```
 
-No image yet, so these show placeholders. Suggested paths:
-- `/images/hero/about-hero.webp`: the client's black Mercedes
-- `/images/hero/services-hero.webp`
-- `/images/hero/contact-hero.webp`: optional
-- `/images/about/about-driver.webp`
-- `/images/about/about-fleet.webp`
+No photo file exists yet, so these show placeholders. Import one in the page
+when a real photo is available:
+- About hero (`pages/AboutPage.jsx`): the client's black Mercedes
+- Services hero (`pages/ServicesPage.jsx`)
+- Contact hero (`pages/ContactPage.jsx`): `city-at-night.webp` is available
+- About page driver photo and fleet photo (`pages/AboutPage.jsx`)
 
 Other static assets:
 - **Fonts:** Manrope, from the `@fontsource/manrope` npm package. Vite bundles
@@ -293,8 +295,9 @@ Other static assets:
 - **Logo:** the gold "TDB" mark, drawn in CSS (no logo file exists yet).
 - **Favicon:** `public/favicon.svg`.
 - **Vehicle drawings** on the offers step: inline SVG.
-- There are no CSS background images. If you add one, use the same public
-  path: `background-image: url('/images/…')`.
+- There are no CSS background images. If you add one, import the file
+  (`import photo from '../images/….webp'`) and use that URL. Do not point CSS
+  at `/src/images/…`.
 
 ### About these images
 
@@ -307,9 +310,10 @@ Other static assets:
   `services/local-taxi.webp` shows **London taxis with UK number plates**,
   which may confuse visitors on a Den Bosch local-taxi card.
 - The served files are WebP copies at quality 82, at most 1600–2000px wide:
-  22.7 MB of originals became 2.6 MB. The untouched originals are kept in
-  `assets/originals/` under their original names. That folder isn't part of
-  the build, so nothing there is deployed.
+  22.7 MB of originals became 2.6 MB. Components import those WebP files from
+  `src/images/`. The untouched originals are kept in `assets/originals/`
+  (and a copy under `src/assets/images/`) under their original names. Those
+  folders are not imported, so nothing there is deployed.
 
 ## Testing
 

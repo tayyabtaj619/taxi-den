@@ -27,7 +27,7 @@ function DetailItem({ icon, label, children, note }) {
 export default function ContactPage({ topic }) {
   return (
     <PageLayout current="contact">
-      <PageHero id="contact-title" eyebrow={t.hero.eyebrow} title={t.hero.title} body={t.hero.body} image={t.hero.image} size="compact" />
+      <PageHero id="contact-title" eyebrow={t.hero.eyebrow} title={t.hero.title} body={t.hero.body} alt={t.hero.imageAlt} size="compact" />
 
       <section className="container contact-page" aria-label={t.hero.title}>
         <div className="contact-page__grid">

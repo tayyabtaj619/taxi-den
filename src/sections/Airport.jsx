@@ -1,6 +1,7 @@
 import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
+import airportFeatureImage from '../images/airport-transfers-feature.webp';
 
 const t = content.airport;
 
@@ -8,7 +9,7 @@ export default function Airport() {
   return (
     <section id="airport" className="container section" aria-labelledby="airport-title">
       <div className="split">
-        <Media image={t.image} tone="dark" className="split__media" />
+        <Media src={airportFeatureImage} alt={t.imageAlt} tone="dark" className="split__media" />
         <div>
           <SectionHeading id="airport-title" eyebrow={t.eyebrow} title={t.title} />
           <p className="lede split__p1">{t.body[0]}</p>

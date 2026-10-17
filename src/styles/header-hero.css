@@ -149,7 +149,7 @@
   background: linear-gradient(90deg, transparent 20%, rgba(229, 185, 87, .35) 65%, transparent 95%);
 }
 .hero__media .media__caption { z-index: 1; max-width: 340px; text-align: right; }
-.hero__media img { animation: hero-in 1.4s var(--ease-out) both; }
+.hero__media img { object-position: center 55%; animation: hero-in 1.4s var(--ease-out) both; }
 @keyframes hero-in { from { transform: scale(1.04); opacity: .6; } }
 
 .hero__shade {
