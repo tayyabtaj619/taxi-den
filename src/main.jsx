@@ -15,7 +15,10 @@ import '@fontsource/manrope/latin-800.css';
 import '@fontsource/manrope/latin-ext-800.css';
 import './styles/base.css';
 import './styles/components.css';
+import './styles/header-hero.css';
 import './styles/sections.css';
+import './styles/booking.css';
+import './styles/pages.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

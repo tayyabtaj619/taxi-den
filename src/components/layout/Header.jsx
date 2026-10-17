@@ -1,14 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { content, contact } from '../../content/index.js';
 import { HeaderLogo } from './Logo.jsx';
+import AccountMenu, { AccountLinks } from './AccountMenu.jsx';
+import Icon from '../ui/Icon.jsx';
 
 const { nav } = content;
 
-export default function Header() {
+/**
+ * Site header shared by every page. `variant="overlay"` sits on a hero image;
+ * `"solid"` is used on the booking pages. `current` marks the active nav item
+ * with aria-current="page". "Book a Taxi" goes to the hero card on the homepage,
+ * or straight into the flow when already on a booking page.
+ */
+export default function Header({ variant = 'overlay', bookHref = '#book', current = null }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef(null);
 
-  // Close the mobile menu with Escape and return focus to the toggle.
   useEffect(() => {
     if (!open) return undefined;
     const onKey = (e) => {
@@ -24,32 +31,36 @@ export default function Header() {
   const close = () => setOpen(false);
 
   return (
-    <header className="header">
+    <header className={`header header--${variant}`}>
       <div className="header__bar">
         <HeaderLogo />
 
-        {/* Wide layout (≥1080px) */}
         <nav className="nav" aria-label={nav.label}>
           {nav.links.map((l) => (
-            <a key={l.href} href={l.href}>
+            <a key={l.href} href={l.href} aria-current={l.page === current ? 'page' : undefined}>
               {l.label}
             </a>
           ))}
         </nav>
+
         <div className="header__actions">
           <a href={contact.phoneHref} className="header__phone">
-            <span className="header__phone-label">{nav.available}</span>
-            <span>{contact.phoneDisplay}</span>
+            <Icon name="phone" size={16} />
+            <span>
+              <span className="header__phone-label">{nav.available}</span>
+              <span className="header__phone-number">{contact.phoneDisplay}</span>
+            </span>
           </a>
-          <a href="#book" className="btn btn--gold header__book">
+          <AccountMenu />
+          <a href={bookHref} className="btn btn--gold header__book">
             {nav.book}
           </a>
         </div>
 
-        {/* Compact layout (<1080px) */}
         <div className="header__compact">
           <a href={contact.phoneHref} className="header__call" aria-label={nav.callLabel}>
-            {nav.call}
+            <Icon name="phone" size={16} />
+            <span className="header__call-text">{nav.call}</span>
           </a>
           <button
             ref={toggleRef}
@@ -59,6 +70,7 @@ export default function Header() {
             aria-controls="mobile-menu"
             onClick={() => setOpen((o) => !o)}
           >
+            <Icon name={open ? 'close' : 'chevronDown'} size={16} />
             {open ? nav.close : nav.menu}
           </button>
         </div>
@@ -67,12 +79,21 @@ export default function Header() {
       {open ? (
         <nav id="mobile-menu" className="mobile-menu" aria-label={nav.mobileLabel}>
           {nav.links.map((l) => (
-            <a key={l.href} href={l.href} className="mobile-menu__link" onClick={close}>
+            <a
+              key={l.href}
+              href={l.href}
+              className="mobile-menu__link"
+              aria-current={l.page === current ? 'page' : undefined}
+              onClick={close}
+            >
               {l.label}
             </a>
           ))}
+          <div className="mobile-menu__account">
+            <AccountLinks onNavigate={close} />
+          </div>
           <div className="mobile-menu__actions">
-            <a href="#book" className="btn btn--gold" onClick={close}>
+            <a href={bookHref} className="btn btn--gold" onClick={close}>
               {nav.book}
             </a>
             <a href={contact.phoneHref} className="btn mobile-menu__phone">

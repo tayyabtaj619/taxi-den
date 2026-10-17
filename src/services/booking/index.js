@@ -12,9 +12,9 @@ export const bookingService = {
   mode: adapter.mode,
   isLive: adapter.mode === 'api',
 
-  /**
-   * @param {import('./types.js').BookingRequest} request
-   * @returns {Promise<import('./types.js').BookingResult>}
-   */
+  /** @param {import('./types.js').OfferRequest} request */
+  getOffers: (request) => adapter.getOffers(request),
+
+  /** @param {import('./types.js').BookingRequest} request */
   submitBookingRequest: (request) => adapter.submitBookingRequest(request),
 };

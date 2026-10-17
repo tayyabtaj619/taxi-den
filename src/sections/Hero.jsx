@@ -1,36 +1,39 @@
-import { content, contact } from '../content/index.js';
+import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
-import heroImage from '../assets/images/Hero section.png';
+import EntryCard from '../components/booking/EntryCard.jsx';
 
 const t = content.hero;
 
+/** Image-led hero: headline left, booking entry card right (stacked on mobile). */
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <Media image={{ ...t.image, src: heroImage }} tone="dark" className="hero__media" eager />
-      <div className="hero__shade" aria-hidden="true" />
+      <div className="hero__visual">
+        <Media image={t.image} tone="dark" className="hero__media" eager sizes="100vw" />
+        <div className="hero__shade" aria-hidden="true" />
+      </div>
+
       <div className="hero__inner">
-        <p className="hero__eyebrow">{t.eyebrow}</p>
-        <h1 id="hero-title" className="hero__title">
-          {t.title}
-        </h1>
-        <p className="hero__body">{t.body}</p>
-        <div className="btn-row hero__ctas">
-          <a href="#book" className="btn btn--lg btn--gold">
-            {t.ctaBook}
-          </a>
-          <a href={contact.phoneHref} className="btn btn--lg btn--ghost-light">
-            {t.ctaCall}
-          </a>
+        <div className="hero__copy">
+          <p className="hero__eyebrow">
+            <span className="hero__rule" aria-hidden="true" />
+            {t.eyebrow}
+          </p>
+          <h1 id="hero-title" className="hero__title">
+            {t.title}
+          </h1>
+          <p className="hero__body">{t.body}</p>
+          <ul className="hero__points">
+            {t.points.map((p) => (
+              <li key={p}>
+                <span className="diamond" aria-hidden="true" />
+                {p}
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="hero__points">
-          {t.points.map((p) => (
-            <li key={p}>
-              <span className="diamond" aria-hidden="true" />
-              {p}
-            </li>
-          ))}
-        </ul>
+
+        <EntryCard />
       </div>
     </section>
   );

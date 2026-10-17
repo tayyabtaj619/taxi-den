@@ -26,6 +26,12 @@
   --r: 8px;
   --r-card: 14px;
   --r-panel: 18px;
+  --r-ctl: 10px;            /* inputs, buttons */
+
+  --c-line-input: #d9d9d3;
+  --ring: 0 0 0 3px rgba(229, 185, 87, .45);
+  --shadow-card: 0 1px 2px rgba(16, 16, 16, .04), 0 14px 36px rgba(16, 16, 16, .07);
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
 }
 
 *,
