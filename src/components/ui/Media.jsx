@@ -34,7 +34,7 @@ export default function Media({ src, alt = '', tone = 'light', className = '', e
           alt={alt}
           loading={eager ? 'eager' : 'lazy'}
           decoding={eager ? 'sync' : 'async'}
-          fetchPriority={eager ? 'high' : undefined}
+          fetchpriority={eager ? 'high' : undefined}
           onError={() => {
             console.error(`[Media] Image failed to load: ${src}`);
             setFailed(true);
