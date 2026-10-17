@@ -2,6 +2,7 @@ import { content, contact } from '../content/index.js';
 import { config } from '../config.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
+import bookingAppImage from '../images/booking-app.webp';
 
 const t = content.app;
 
@@ -30,7 +31,7 @@ export default function AppPromo() {
             ) : null}
           </div>
         </div>
-        <Media image={t.image} className="app-card__media" />
+        <Media src={bookingAppImage} alt={t.imageAlt} className="app-card__media" />
       </div>
     </section>
   );

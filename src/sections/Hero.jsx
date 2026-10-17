@@ -1,6 +1,7 @@
 import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import EntryCard from '../components/booking/EntryCard.jsx';
+import heroImage from '../images/home-hero.webp';
 
 const t = content.hero;
 
@@ -9,7 +10,7 @@ export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="hero__visual">
-        <Media image={t.image} tone="dark" className="hero__media" eager sizes="100vw" />
+        <Media src={heroImage} alt={t.imageAlt} tone="dark" className="hero__media" eager />
         <div className="hero__shade" aria-hidden="true" />
       </div>
 

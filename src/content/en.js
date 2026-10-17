@@ -2,11 +2,9 @@
 // with the same shape can be added later without touching components.
 // Source: approved design "Taxi Den Bosch Homepage v2".
 //
-// IMAGES: every image is an `image: { src, alt }` object next to the copy it
-// belongs to. `src` is a root-relative path to a file in public/images/
-// (e.g. '/images/hero/home-hero.webp'). To replace an image, add the new file
-// to public/images/ and change `src` here; no component changes are needed.
-// An empty src ('') shows the design's placeholder slot.
+// Photos are imported in the component that renders them, from src/images/.
+// This file keeps the alt text (`imageAlt`) because it is translated copy.
+// To swap a photo, change that component's import filename.
 //
 // Do not add reviews, fares, discounts or guarantees that are not verified
 // with the client.
@@ -69,14 +67,9 @@ const en = {
     body: 'Local journeys, airport transfers and business travel from Den Bosch, with professional drivers and clear fares.',
     callPrefix: 'Prefer to call?',
     points: ['Available 24/7', 'Transparent fares, no hidden costs', 'Trained, professional drivers'],
-    // Generated promotional image (not the client's own car). Swap for a real
-    // photo of the client's vehicle when available.
-    image: {
-      src: '/images/hero/home-hero.webp',
-      alt: "Black Mercedes taxi on a square in Den Bosch at sunset",
-      position: 'center 55%',
-      caption: 'home hero · public/images/hero/',
-    },
+    // Generated promotional image (not the client's own car). Swap the import
+    // in sections/Hero.jsx for a real photo of the client's vehicle when available.
+    imageAlt: "Black Mercedes taxi on a square in Den Bosch at sunset",
   },
 
   // Booking entry card in the hero.
@@ -284,7 +277,7 @@ const en = {
         title: 'Local Taxi Services',
         body: ['Taxi journeys within Den Bosch and the surrounding area, with convenient booking and experienced drivers who speak Dutch and English.'],
         links: [{ href: '#local', label: 'Local taxi service →' }],
-        image: { src: '/images/services/local-taxi.webp', alt: 'Two black taxis on a city street' },
+        imageAlt: 'Two black taxis on a city street',
       },
       {
         id: 'airport-card',
@@ -296,7 +289,7 @@ const en = {
           { href: '#airport', label: 'Eindhoven Airport →' },
           { href: '#airport', label: 'Amsterdam Schiphol Airport →' },
         ],
-        image: { src: '/images/services/airport-transfers.webp', alt: 'Driver loading luggage into a black Mercedes at an airport terminal' },
+        imageAlt: 'Driver loading luggage into a black Mercedes at an airport terminal',
       },
       {
         id: 'business',
@@ -308,7 +301,7 @@ const en = {
           'Pay in cash or by card, or ask about billing on account.',
         ],
         links: [{ href: '#contact', label: 'Enquire about business travel →' }],
-        image: { src: '/images/services/business-transport.webp', alt: 'Chauffeur holding the rear door of a black car open for a passenger' },
+        imageAlt: 'Chauffeur holding the rear door of a black car open for a passenger',
       },
       {
         id: 'weddings',
@@ -319,7 +312,7 @@ const en = {
           "Transport for your wedding day or special occasion, from collecting the wedding party to taking guests to the reception. Tell us what you need and we'll plan it with you.",
         ],
         links: [{ href: '#contact', label: 'Plan your event transport →' }],
-        image: { src: '/images/services/wedding-transport.webp', alt: 'Bride and groom beside a black Mercedes' },
+        imageAlt: 'Bride and groom beside a black Mercedes',
       },
       {
         id: 'groups',
@@ -330,7 +323,7 @@ const en = {
           'Spacious vehicles such as the Mercedes Vito and V-Class for company outings, family celebrations, a group trip to Schiphol or a ride home after a party.',
         ],
         links: [{ href: '#book', label: 'Book group transport →' }],
-        image: { src: '/images/services/group-transport.webp', alt: 'Travellers with luggage boarding a black Mercedes V-Class van' },
+        imageAlt: 'Travellers with luggage boarding a black Mercedes V-Class van',
       },
       {
         id: 'tours',
@@ -341,7 +334,7 @@ const en = {
           'Discover the history, culture and hidden corners of Den Bosch and the surrounding area with an experienced driver who knows the city, on a route shaped around your interests.',
         ],
         links: [{ href: '#contact', label: 'Ask about a private tour →' }],
-        image: { src: '/images/services/private-tours.webp', alt: 'Chauffeur at the open door of a black luxury car on a city street' },
+        imageAlt: 'Chauffeur at the open door of a black luxury car on a city street',
       },
     ],
   },
@@ -371,7 +364,7 @@ const en = {
     routes: ['Eindhoven Airport', 'Amsterdam Schiphol Airport', 'Maastricht Airport'],
     routeCta: 'Plan this journey →',
     cta: 'Book an Airport Transfer',
-    image: { src: '/images/sections/airport-transfers-feature.webp', alt: 'Aircraft at an airport gate at sunset' },
+    imageAlt: 'Aircraft at an airport gate at sunset',
   },
 
   local: {
@@ -383,7 +376,7 @@ const en = {
     ],
     ctaBook: 'Book a Local Taxi',
     ctaCall: `Call ${contact.phoneDisplay}`,
-    image: { src: '/images/sections/local-taxi-feature.webp', alt: 'Driver standing beside a black Mercedes taxi outside a building' },
+    imageAlt: 'Driver standing beside a black Mercedes taxi outside a building',
   },
 
   reviews: {
@@ -405,7 +398,7 @@ const en = {
     googlePlayPre: 'Get it on',
     googlePlay: 'Google Play',
     googlePlayPending: 'Google Play link to be confirmed',
-    image: { src: '/images/app/booking-app.webp', alt: 'Hand holding a phone with a taxi booking app, a black Mercedes in the background' },
+    imageAlt: 'Hand holding a phone with a taxi booking app, a black Mercedes in the background',
   },
 
   faq: {
@@ -478,12 +471,8 @@ const en = {
         body: "Taxi Den Bosch (Snel Taxi) provides taxi transport from 's-Hertogenbosch to destinations across the Netherlands and beyond, for personal and business travel.",
         primary: 'Book a Taxi',
         secondary: 'View Our Services',
-        image: {
-          src: '', // add e.g. /images/hero/about-hero.webp (client's black Mercedes)
-          alt: 'Taxi Den Bosch black Mercedes in Den Bosch',
-          position: 'center 60%',
-          caption: "no image yet · public/images/hero/about-hero.webp · client's black Mercedes",
-        },
+        // No photo imported yet. Add the import in pages/AboutPage.jsx.
+        imageAlt: 'Taxi Den Bosch black Mercedes in Den Bosch',
       },
       intro: {
         eyebrow: 'WHO WE ARE',
@@ -511,21 +500,14 @@ const en = {
           { icon: 'phone', title: 'Convenient booking', body: `Book online, by phone on ${contact.phoneDisplay}, via WhatsApp or with the Snel Taxi app.` },
         ],
       },
+      // No photos imported yet. Add the imports in pages/AboutPage.jsx.
       photos: [
         {
-          image: {
-            src: '', // add e.g. /images/about/about-driver.webp
-            alt: 'A Taxi Den Bosch driver next to one of the cars',
-            caption: 'no image yet · public/images/about/about-driver.webp',
-          },
+          imageAlt: 'A Taxi Den Bosch driver next to one of the cars',
           caption: 'Experienced local drivers',
         },
         {
-          image: {
-            src: '', // add e.g. /images/about/about-fleet.webp
-            alt: 'Taxi Den Bosch vehicles',
-            caption: 'no image yet · public/images/about/about-fleet.webp',
-          },
+          imageAlt: 'Taxi Den Bosch vehicles',
           caption: 'Mercedes and Volkswagen vehicles, including the V-Class and Vito',
         },
       ],
@@ -542,12 +524,8 @@ const en = {
         eyebrow: 'OUR SERVICES',
         title: 'Reliable Taxi Services for Every Journey',
         body: 'From a short trip across town to an airport transfer, a business appointment or your wedding day. Every service can be booked online, by phone or via WhatsApp.',
-        image: {
-          src: '', // add e.g. /images/hero/services-hero.webp
-          alt: 'Taxi Den Bosch black Mercedes',
-          position: 'center 60%',
-          caption: 'no image yet · public/images/hero/services-hero.webp',
-        },
+        // No photo imported yet. Add the import in pages/ServicesPage.jsx.
+        imageAlt: 'Taxi Den Bosch black Mercedes',
       },
       gridLabel: 'All services',
       actions: {
@@ -574,12 +552,8 @@ const en = {
         eyebrow: 'CONTACT US',
         title: 'Get in Touch',
         body: 'Questions about a journey, a fixed fare, business travel or an event? Call or WhatsApp us for the quickest answer, or send us a message.',
-        image: {
-          src: '', // optional; /images/library/city-at-night.webp is available
-          alt: 'Den Bosch at dusk',
-          position: 'center 50%',
-          caption: 'no image yet (optional) · public/images/hero/contact-hero.webp',
-        },
+        // No photo imported yet. city-at-night.webp is available in src/images/.
+        imageAlt: 'Den Bosch at dusk',
       },
       urgent: 'Need a taxi right now? Calling is the fastest way:',
       details: {

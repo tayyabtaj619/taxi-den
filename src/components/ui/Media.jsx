@@ -1,26 +1,20 @@
 import { useState } from 'react';
 import { config } from '../../config.js';
 
-// Root-relative public paths ('/images/...') are prefixed with Vite's base
-// URL, so the site also works when deployed under a sub-path (vite `base`).
-// Absolute URLs (https://…) and data: URIs are used as-is.
-const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
-export const assetUrl = (src) => (src && src.startsWith('/') ? `${BASE}${src}` : src);
-
 /**
- * Photo slot. Renders `image.src` (a path into public/images, set in the
- * content file) with its alt text. The slot's size comes from CSS
- * (aspect-ratio or absolute fill), so images cause no layout shift.
+ * Photo slot. `src` is a URL Vite produced from a static import in the
+ * component that uses the image (`import heroImage from '../images/…'`).
+ * The slot's size comes from CSS (aspect-ratio or absolute fill), so images
+ * cause no layout shift.
  *
  * - eager: load first with high priority (heroes); otherwise lazy-loaded.
  * - No src: renders the design's striped placeholder (decorative, hidden from
- *   assistive tech) with the slot caption in development.
+ *   assistive tech).
  * - Broken src: logged as an error in every environment; in development the
- *   slot is also outlined and labelled so a wrong path is impossible to miss.
- *   In production the <img> stays in place (alt text visible), never hidden.
+ *   slot is also outlined and labelled. In production the <img> stays in
+ *   place (alt text visible), never hidden.
  */
-export default function Media({ image, tone = 'light', className = '', eager = false, sizes }) {
-  const { src, srcSet, alt = '', caption, position } = image || {};
+export default function Media({ src, alt = '', tone = 'light', className = '', eager = false }) {
   const [failed, setFailed] = useState(false);
   const classes = [
     'media',
@@ -36,16 +30,13 @@ export default function Media({ image, tone = 'light', className = '', eager = f
     return (
       <div className={classes}>
         <img
-          src={assetUrl(src)}
-          srcSet={srcSet}
-          sizes={sizes}
+          src={src}
           alt={alt}
           loading={eager ? 'eager' : 'lazy'}
           decoding={eager ? 'sync' : 'async'}
-          fetchPriority={eager ? 'high' : undefined}
-          style={position ? { objectPosition: position } : undefined}
+          fetchpriority={eager ? 'high' : undefined}
           onError={() => {
-            console.error(`[Media] Image not found: ${src} (check public${src} and image.src in src/content)`);
+            console.error(`[Media] Image failed to load: ${src}`);
             setFailed(true);
           }}
         />
@@ -54,9 +45,5 @@ export default function Media({ image, tone = 'light', className = '', eager = f
     );
   }
 
-  return (
-    <div className={classes} aria-hidden="true">
-      {config.showDevNotes && caption ? <span className="media__caption">{caption}</span> : null}
-    </div>
-  );
+  return <div className={classes} aria-hidden="true" />;
 }
