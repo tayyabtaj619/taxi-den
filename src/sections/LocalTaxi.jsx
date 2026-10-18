@@ -1,7 +1,7 @@
 import { content, contact } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
-import localTaxiFeatureImage from '../images/local-taxi-feature.webp';
+import localTaxiFeatureImage from '../images/private-tours.webp';
 
 const t = content.local;
 

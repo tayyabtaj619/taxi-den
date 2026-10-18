@@ -1,7 +1,7 @@
 import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import EntryCard from '../components/booking/EntryCard.jsx';
-import heroImage from '../images/home-hero.webp';
+import heroImage from '../images/Hero section.png';
 
 const t = content.hero;
 

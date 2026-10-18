@@ -1,12 +1,12 @@
 import { content } from '../content/index.js';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
-import localTaxiImage from '../images/local-taxi.webp';
-import airportTransfersImage from '../images/airport-transfers.webp';
-import businessTransportImage from '../images/business-transport.webp';
-import weddingTransportImage from '../images/wedding-transport.webp';
-import groupTransportImage from '../images/group-transport.webp';
-import privateToursImage from '../images/private-tours.webp';
+import localTaxiImage from '../images/Hero section.png';
+import airportTransfersImage from '../images/Airport transfers.png';
+import businessTransportImage from '../images/business transport.jpg';
+import weddingTransportImage from '../images/Wedding transport.png';
+import groupTransportImage from '../images/Group transport.png';
+import privateToursImage from '../images/Private tours in Den Bosch.jpg';
 
 const t = content.services;
 
