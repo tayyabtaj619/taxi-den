@@ -1,6 +1,7 @@
 import { content } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
+import { bookPath } from '../hooks/useHashRoute.js';
 import airportFeatureImage from '../images/airport-transfers-feature.webp';
 
 const t = content.airport;
@@ -18,14 +19,14 @@ export default function Airport() {
             {t.routes.map((route) => (
               <li key={route}>
                 <span className="routes__name">{route}</span>
-                <a href="#book" aria-label={`${t.routeCta.replace(' →', '')}: ${route}`}>
+                <a href={bookPath()} aria-label={`${t.routeCta.replace(' →', '')}: ${route}`}>
                   {t.routeCta}
                 </a>
               </li>
             ))}
           </ul>
           <div className="btn-row airport__cta">
-            <a href="#book" className="btn btn--md btn--ink">
+            <a href={bookPath()} className="btn btn--md btn--ink">
               {t.cta}
             </a>
           </div>

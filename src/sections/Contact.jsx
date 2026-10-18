@@ -1,4 +1,5 @@
 import { content, contact } from '../content/index.js';
+import { bookPath } from '../hooks/useHashRoute.js';
 
 const t = content.cta;
 
@@ -12,7 +13,7 @@ export default function Contact() {
           </h2>
           <p className="contact__body">{t.body}</p>
           <div className="btn-row contact__ctas">
-            <a href="#book" className="btn btn--lg btn--gold">
+            <a href={bookPath()} className="btn btn--lg btn--gold">
               {t.book}
             </a>
             <a href={contact.phoneHref} className="btn btn--lg btn--ghost-dark">

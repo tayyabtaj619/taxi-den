@@ -1,6 +1,7 @@
 import { content, contact } from '../content/index.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
+import { bookPath } from '../hooks/useHashRoute.js';
 import localTaxiFeatureImage from '../images/local-taxi-feature.webp';
 
 const t = content.local;
@@ -14,7 +15,7 @@ export default function LocalTaxi() {
           <p className="lede split__p1">{t.body[0]}</p>
           <p className="lede split__p2">{t.body[1]}</p>
           <div className="btn-row">
-            <a href="#book" className="btn btn--md btn--ink">
+            <a href={bookPath()} className="btn btn--md btn--ink">
               {t.ctaBook}
             </a>
             <a href={contact.phoneHref} className="btn btn--md btn--outline">

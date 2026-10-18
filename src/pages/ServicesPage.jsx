@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero.jsx';
 import CtaBand from '../components/CtaBand.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
 import Icon from '../components/ui/Icon.jsx';
-import { pagePath } from '../hooks/useHashRoute.js';
+import { bookPath, pagePath } from '../hooks/useHashRoute.js';
 import localTaxiImage from '../images/local-taxi.webp';
 import airportTransfersImage from '../images/airport-transfers.webp';
 import businessTransportImage from '../images/business-transport.webp';
@@ -21,7 +21,7 @@ function actionFor(item) {
   if (item.action === 'contact') {
     return { href: pagePath('contact', item.slug), label: t.actions.contact, button: true };
   }
-  return { href: '#book', label: t.actions.book, button: true };
+  return { href: bookPath(), label: t.actions.book, button: true };
 }
 
 function service(slug) {

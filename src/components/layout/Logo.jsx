@@ -1,26 +1,25 @@
 import { content } from '../../content/index.js';
+import logoSrc from '../../images/brand/den-bosch-taxi-logo.png';
 
 const { brand } = content;
 
-/** Header logo: gold mark, white wordmark, links to the top of the page. */
+/**
+ * Official Den Bosch Taxi mark (transparent PNG). Aspect ratio is preserved;
+ * size is controlled in CSS so the header stays compact.
+ */
 export function HeaderLogo() {
   return (
     <a href="#top" className="logo" aria-label={brand.homeLabel}>
-      <span className="logo__mark" aria-hidden="true">{brand.mark}</span>
-      <span className="logo__text" aria-hidden="true">
-        <span className="logo__name">{brand.name}</span>
-        <span className="logo__sub">{brand.sub}</span>
-      </span>
+      <img src={logoSrc} alt="" className="logo__img logo__img--header" width="160" height="108" decoding="async" />
     </a>
   );
 }
 
-/** Footer logo: dark mark with gold letters. */
+/** Footer logo on the light footer background. */
 export function FooterLogo() {
   return (
     <div className="footer__logo">
-      <span className="logo__mark logo__mark--dark" aria-hidden="true">{brand.mark}</span>
-      <span className="logo__name">{brand.name}</span>
+      <img src={logoSrc} alt={brand.name} className="logo__img logo__img--footer" width="180" height="121" decoding="async" />
     </div>
   );
 }

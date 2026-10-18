@@ -30,7 +30,7 @@ export default function HomePage({ anchor }) {
       <a href="#book" className="skip-link">
         Skip to booking form
       </a>
-      <Header current="home" />
+      <Header current="home" bookHref="#/book" />
       <main id="top">
         <Hero />
         <Services />
