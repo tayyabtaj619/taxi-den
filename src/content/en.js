@@ -9,6 +9,9 @@
 // Do not add reviews, fares, discounts or guarantees that are not verified
 // with the client.
 
+// Booking entry route used in footer / service copy. Keep in sync with bookPath().
+const BOOK = '#/book';
+
 export const contact = {
   phoneDisplay: '073 234 0600',
   phoneHref: 'tel:+31732340600',
@@ -16,16 +19,17 @@ export const contact = {
   whatsappHref: 'https://wa.me/31644479990',
   email: 'Sneltaxidenbosch@hotmail.com',
   addressLines: ['Klokkenlaan', '5231 BE Den Bosch'],
+  // Snel Taxi App Store URL from the live site — keep in sync with storeLinks.
   appStoreUrl: 'https://apps.apple.com/app/snel-taxi/id6476443399',
 };
 
 const en = {
   locale: 'en-GB',
   brand: {
-    name: 'TAXI DEN BOSCH',
-    sub: 'SNEL TAXI',
-    mark: 'TDB',
-    homeLabel: 'Taxi Den Bosch, back to the homepage',
+    name: 'Den Bosch Taxi',
+    sub: '',
+    mark: 'DB',
+    homeLabel: 'Den Bosch Taxi, back to the homepage',
   },
 
   nav: {
@@ -50,26 +54,25 @@ const en = {
       customers: 'Customers',
       drivers: 'Drivers',
       // Customer pages exist on the current live site (taxidenbosch.eu).
-      // Drivers have no web portal; the live site points them to the app.
+      // Driver login uses the verified Snel Taxi app listing.
       items: {
-        login: { label: 'Customer log in', hint: 'Opens the current customer portal' },
-        register: { label: 'Create an account', hint: 'Opens the current customer portal' },
-        driverApp: { label: 'Driver login', hint: 'In the Snel Taxi app' },
-        driverApply: { label: 'Become a driver', hint: 'Email us to register interest' },
+        login: { label: 'Customer log in' },
+        register: { label: 'Create an account' },
+        driverLogin: { label: 'Driver login' },
+        driverApply: { label: 'Become a driver' },
       },
-      driverApplySubject: 'Driver registration',
     },
   },
 
   hero: {
-    eyebrow: 'TAXI DEN BOSCH · 24/7',
+    eyebrow: 'DEN BOSCH TAXI · 24/7',
     title: 'Reliable Taxi Service. Whenever You Need It.',
     body: 'Local journeys, airport transfers and business travel from Den Bosch, with professional drivers and clear fares.',
     callPrefix: 'Prefer to call?',
     points: ['Available 24/7', 'Transparent fares, no hidden costs', 'Trained, professional drivers'],
     // Generated promotional image (not the client's own car). Swap the import
     // in sections/Hero.jsx for a real photo of the client's vehicle when available.
-    imageAlt: "Black Mercedes taxi on a square in Den Bosch at sunset",
+    imageAlt: 'Black Mercedes taxi on a square in Den Bosch at sunset',
   },
 
   // Booking entry card in the hero.
@@ -198,7 +201,7 @@ const en = {
     },
 
     notConnected:
-      'Development version: online booking is not yet connected. Your request will not be sent to Taxi Den Bosch and no fare will be calculated.',
+      'Development version: online booking is not yet connected. Your request will not be sent to Den Bosch Taxi and no fare will be calculated.',
 
     errors: {
       pickup: 'Please enter a pickup location.',
@@ -232,7 +235,7 @@ const en = {
       mock: {
         before: 'This is a development version. Your request has ',
         strong: 'not',
-        afterStrong: ' been sent to Taxi Den Bosch and no journey has been booked. Call ',
+        afterStrong: ' been sent to Den Bosch Taxi and no journey has been booked. Call ',
         beforeLink: ' or send a ',
         link: 'WhatsApp message',
         after: ' to book now.',
@@ -322,7 +325,7 @@ const en = {
         body: [
           'Spacious vehicles such as the Mercedes Vito and V-Class for company outings, family celebrations, a group trip to Schiphol or a ride home after a party.',
         ],
-        links: [{ href: '#book', label: 'Book group transport →' }],
+        links: [{ href: BOOK, label: 'Book group transport →' }],
         imageAlt: 'Travellers with luggage boarding a black Mercedes V-Class van',
       },
       {
@@ -340,10 +343,10 @@ const en = {
   },
 
   why: {
-    eyebrow: 'WHY TAXI DEN BOSCH',
+    eyebrow: 'WHY DEN BOSCH TAXI',
     title: 'A Better Way to Travel',
     intro:
-      "Taxi Den Bosch (Snel Taxi) provides taxi transport from 's-Hertogenbosch to destinations across the Netherlands and beyond, for both personal and business travel.",
+      "Den Bosch Taxi provides taxi transport from 's-Hertogenbosch to destinations across the Netherlands and beyond, for both personal and business travel.",
     items: [
       { badge: '24/7', title: 'Available 24/7', body: 'An early flight or a late night out: you can book a taxi at any hour, seven days a week.' },
       { badge: '02', title: 'Professional Drivers', body: 'Trained, experienced and well-presented drivers who speak Dutch and English and are happy to help with your luggage.' },
@@ -371,7 +374,7 @@ const en = {
     eyebrow: 'LOCAL TAXI',
     title: 'Your Local Taxi in Den Bosch',
     body: [
-      "Whether you're travelling across Den Bosch, heading to a hotel or station, or arranging a journey elsewhere in the Netherlands, Taxi Den Bosch provides convenient transport for personal and business travel.",
+      "Whether you're travelling across Den Bosch, heading to a hotel or station, or arranging a journey elsewhere in the Netherlands, Den Bosch Taxi provides convenient transport for personal and business travel.",
       'Our drivers are punctual, experienced and know the area well. Fares are clear upfront, with no extra costs afterwards.',
     ],
     ctaBook: 'Book a Local Taxi',
@@ -385,19 +388,18 @@ const en = {
     // Empty until genuine, attributable testimonials are confirmed with the client.
     items: [],
     pendingStrong: 'Reviews pending verification.',
-    pendingBody: ' Customer reviews will be shown here once genuine, attributable testimonials have been confirmed with Taxi Den Bosch.',
+    pendingBody: ' Customer reviews will be shown here once genuine, attributable testimonials have been confirmed with Den Bosch Taxi.',
     devNote: 'dev note · not shown in production',
   },
 
   app: {
     eyebrow: 'SNEL TAXI APP',
-    title: 'Book your next ride with the Snel Taxi Den Bosch app',
-    body: 'Prefer booking from your phone? Download the Snel Taxi app to arrange your taxi journey.',
+    title: 'Book your next ride with the Snel Taxi app',
+    body: 'Prefer booking from your phone? Download the Snel Taxi app to arrange your taxi journey with Den Bosch Taxi.',
     appStorePre: 'Download on the',
     appStore: 'App Store',
     googlePlayPre: 'Get it on',
     googlePlay: 'Google Play',
-    googlePlayPending: 'Google Play link to be confirmed',
     imageAlt: 'Hand holding a phone with a taxi booking app, a black Mercedes in the background',
   },
 
@@ -418,7 +420,7 @@ const en = {
         a: 'Yes. We provide pre-booked transfers to and from Eindhoven Airport and Amsterdam Schiphol Airport, as well as Maastricht Airport. Book ahead so we can plan your journey around your travel schedule.',
       },
       {
-        q: 'Is Taxi Den Bosch available around the clock?',
+        q: 'Is Den Bosch Taxi available around the clock?',
         a: 'Yes. We are available 24 hours a day, 7 days a week, including early mornings and late evenings.',
       },
       {
@@ -438,7 +440,7 @@ const en = {
 
   cta: {
     title: 'Ready for Your Next Journey?',
-    body: 'Book your next taxi journey with Taxi Den Bosch. Get in touch to arrange local transport, an airport transfer, or a journey for business or leisure.',
+    body: 'Book your next taxi journey with Den Bosch Taxi. Get in touch to arrange local transport, an airport transfer, or a journey for business or leisure.',
     book: 'Book a Taxi',
     call: 'Call Us',
     whatsapp: 'WhatsApp',
@@ -457,22 +459,25 @@ const en = {
   // founding dates, fleet sizes, years in business or testimonials.
   pages: {
     titles: {
-      home: 'Taxi Den Bosch | 24/7 Taxi, Airport Transfers & Business Transport',
-      about: 'About | Taxi Den Bosch',
-      services: 'Services | Taxi Den Bosch',
-      contact: 'Contact | Taxi Den Bosch',
-      book: 'Book a Taxi | Taxi Den Bosch',
+      home: 'Den Bosch Taxi | 24/7 Taxi, Airport Transfers & Business Transport',
+      about: 'About | Den Bosch Taxi',
+      services: 'Services | Den Bosch Taxi',
+      contact: 'Contact | Den Bosch Taxi',
+      book: 'Book a Taxi | Den Bosch Taxi',
+      help: 'Help Center | Den Bosch Taxi',
+      privacy: 'Privacy Policy | Den Bosch Taxi',
+      terms: 'Terms of Use | Den Bosch Taxi',
+      driverRegister: 'Become a Driver | Den Bosch Taxi',
     },
 
     about: {
       hero: {
         eyebrow: 'ABOUT US',
         title: 'Your Trusted Taxi Partner in Den Bosch',
-        body: "Taxi Den Bosch (Snel Taxi) provides taxi transport from 's-Hertogenbosch to destinations across the Netherlands and beyond, for personal and business travel.",
+        body: "Den Bosch Taxi provides taxi transport from 's-Hertogenbosch to destinations across the Netherlands and beyond, for personal and business travel.",
         primary: 'Book a Taxi',
         secondary: 'View Our Services',
-        // No photo imported yet. Add the import in pages/AboutPage.jsx.
-        imageAlt: 'Taxi Den Bosch black Mercedes in Den Bosch',
+        imageAlt: 'Den Bosch Taxi vehicle in Den Bosch',
       },
       intro: {
         eyebrow: 'WHO WE ARE',
@@ -500,14 +505,13 @@ const en = {
           { icon: 'phone', title: 'Convenient booking', body: `Book online, by phone on ${contact.phoneDisplay}, via WhatsApp or with the Snel Taxi app.` },
         ],
       },
-      // No photos imported yet. Add the imports in pages/AboutPage.jsx.
       photos: [
         {
-          imageAlt: 'A Taxi Den Bosch driver next to one of the cars',
+          imageAlt: 'A Den Bosch Taxi driver next to one of the cars',
           caption: 'Experienced local drivers',
         },
         {
-          imageAlt: 'Taxi Den Bosch vehicles',
+          imageAlt: 'Den Bosch Taxi vehicles',
           caption: 'Mercedes and Volkswagen vehicles, including the V-Class and Vito',
         },
       ],
@@ -524,8 +528,7 @@ const en = {
         eyebrow: 'OUR SERVICES',
         title: 'Reliable Taxi Services for Every Journey',
         body: 'From a short trip across town to an airport transfer, a business appointment or your wedding day. Every service can be booked online, by phone or via WhatsApp.',
-        // No photo imported yet. Add the import in pages/ServicesPage.jsx.
-        imageAlt: 'Taxi Den Bosch black Mercedes',
+        imageAlt: 'Den Bosch Taxi black Mercedes',
       },
       gridLabel: 'All services',
       actions: {
@@ -619,7 +622,7 @@ const en = {
         },
         sending: 'Sending…',
         bodyTemplate: ({ name, email, phone, subject, message }) =>
-          `${message}\n\n—\nName: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\nSubject: ${subject}\n(Sent via the contact form on the Taxi Den Bosch website)`,
+          `${message}\n\n—\nName: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\nSubject: ${subject}\n(Sent via the contact form on the Den Bosch Taxi website)`,
       },
       location: {
         eyebrow: 'LOCATION',
@@ -629,38 +632,279 @@ const en = {
         mapQuery: "Klokkenlaan, 5231 BE 's-Hertogenbosch",
       },
     },
+
+    // Help content drawn from the live Help Center contact details and the
+    // verified FAQ / booking copy on this site. No unverified cancellation
+    // or refund rules are stated.
+    help: {
+      eyebrow: 'HELP CENTER',
+      title: 'How can we help?',
+      intro:
+        'Answers about booking a taxi with Den Bosch Taxi. If you need something else, call or WhatsApp us — we are available 24 hours a day, 7 days a week.',
+      sections: ({ contact: c, bookPath, pagePath }) => [
+        {
+          title: 'Booking a taxi',
+          paragraphs: [
+            `You can start a booking on this website, call ${c.phoneDisplay}, send a WhatsApp message to ${c.whatsappDisplay}, or use the Snel Taxi app.`,
+            'Online booking on this website collects your journey details in a guided form. Until the booking system is fully connected, please also confirm by phone or WhatsApp if you need an immediate confirmation.',
+          ],
+          actions: [
+            { href: bookPath(), label: 'Book a Taxi' },
+            { href: c.phoneHref, label: `Call ${c.phoneDisplay}` },
+          ],
+        },
+        {
+          title: 'Immediate versus scheduled journeys',
+          paragraphs: [
+            'In the booking form you can choose “Now” for as soon as possible, or “Schedule” to pick a date and time.',
+            'Scheduled pickups should be at least 15 minutes ahead when you choose a specific time. For airport and early-morning trips, booking ahead helps us plan around your travel schedule.',
+          ],
+        },
+        {
+          title: 'Changing or cancelling a booking',
+          paragraphs: [
+            'This website does not yet publish a self-service change or cancellation policy for online requests.',
+            `To change or cancel a journey you have arranged, contact us by phone on ${c.phoneDisplay} or via WhatsApp. Specific cancellation terms for a booked ride follow the applicable transport conditions — see Terms of Use.`,
+          ],
+          actions: [{ href: pagePath('terms'), label: 'Terms of Use' }],
+        },
+        {
+          title: 'Airport transfers',
+          paragraphs: [
+            'We provide pre-booked, door-to-door transfers to and from Eindhoven Airport, Amsterdam Schiphol Airport and Maastricht Airport.',
+            'When you book, you can add an optional flight number so your driver can follow your arrival. Fixed fares are available for many airport routes — ask us for the fare for your trip.',
+          ],
+          actions: [{ href: bookPath(), label: 'Book an airport transfer' }],
+        },
+        {
+          title: 'Account access',
+          paragraphs: [
+            'Customer log in and registration open the existing customer portal on taxidenbosch.eu.',
+            'Driver login uses the Snel Taxi app. A dedicated web registration flow for new drivers is being prepared on this site.',
+          ],
+        },
+        {
+          title: 'Contacting the company',
+          paragraphs: [
+            `Phone: ${c.phoneDisplay} · WhatsApp: ${c.whatsappDisplay} · Email: ${c.email}`,
+            `Head office: ${c.addressLines.join(', ')}. Open 24 hours a day, 7 days a week.`,
+          ],
+          actions: [{ href: pagePath('contact'), label: 'Contact form' }],
+        },
+      ],
+      contactAside: {
+        title: 'Still need help?',
+        body: 'Call or WhatsApp for the quickest answer, or send a message through the contact form.',
+        form: 'Contact form',
+      },
+    },
+
+    // Privacy summary based on the Dutch privacy statement published at
+    // taxidenbosch.eu/privacy-and-policy. That source page truncates mid-section;
+    // missing details are flagged below for client/legal confirmation.
+    privacy: {
+      eyebrow: 'PRIVACY',
+      title: 'Privacy Policy',
+      intro:
+        'This page summarises the privacy statement published for Snel Taxi Den Bosch / Taxi Den Bosch. It explains, in plain language, how personal data may be collected and used when you use the website, the Snel Taxi app, or taxi services.',
+      sections: [
+        {
+          id: 'scope',
+          heading: 'Scope',
+          paragraphs: [
+            'The source privacy statement applies to the collection, processing and use of personal data in general, and specifically when using the Taxi Snel Taxi Den Bosch website and the Snel Taxi Den Bosch app.',
+            'References to “Snel Taxi Den Bosch” in the source statement also cover affiliated parties and connected taxi entrepreneurs associated with Taxi Centrale Den Bosch, as described there.',
+          ],
+        },
+        {
+          id: 'principles',
+          heading: 'How personal data is used',
+          paragraphs: [
+            'According to the source statement, only personal data needed to perform the service you request is processed. Data may also be used to improve services, to provide relevant information, and where needed to meet legal requirements.',
+            'To deliver services, Snel Taxi Den Bosch works with parties that help maintain and secure software and IT infrastructure.',
+          ],
+        },
+        {
+          id: 'who',
+          heading: 'Whose data is collected',
+          paragraphs: ['The source statement lists collection of personal data from:'],
+          list: [
+            'Passengers who take taxi journeys',
+            'Representatives of business relations',
+            'Website visitors',
+            'Employees and job applicants',
+            'Affiliated taxi entrepreneurs and their employees',
+          ],
+        },
+        {
+          id: 'how',
+          heading: 'When data is collected',
+          paragraphs: ['Examples given in the source statement include:'],
+          list: [
+            'When you call',
+            'When you request or use services',
+            'When you enter into an agreement',
+            'When you email or use a contact form',
+            'When you use products, applications or software such as the Snel Taxi Den Bosch app',
+            'When you visit the website',
+            'When you follow social channels or leave a review on a review platform',
+          ],
+        },
+        {
+          id: 'purposes',
+          heading: 'Purposes described in the source statement',
+          paragraphs: [
+            'Data provided under an agreement is used to perform that agreement, for personalised product information related to the agreement, and to improve service (for example shorter arrival times and taxi availability). Completing a taxi journey and downloading the app are given as examples of agreements.',
+            'When you contact the company to order a taxi or request information, the data you provide is processed to deliver the service, answer the request, or respond to your questions.',
+            'On the website, general visit data and click behaviour may be recorded to improve layout and information. Cookies may be placed so the website functions correctly.',
+          ],
+          list: [
+            'Performing agreements and taxi journeys, including via external parties (apps)',
+            'Security of drivers and passengers may involve a camera that can be placed in the taxi; whether a camera is used is described in the source as the choice and responsibility of the taxi entrepreneur',
+          ],
+        },
+      ],
+      confirmation: {
+        title: 'Client / legal confirmation needed',
+        body:
+          'The privacy statement published on taxidenbosch.eu appears incomplete on the public page (it cuts off mid-sentence in the camera/security section). Details that still need confirmation before this can be treated as a final legal document include: the full cookie policy, retention periods, your rights under the GDPR (access, correction, erasure), data-sharing partners, international transfers, the data controller’s formal identity and contact for privacy requests, and any English-language official version. Until then, treat the Dutch source statement and your counsel’s advice as authoritative.',
+      },
+    },
+
+    // Terms taken from the Dutch text published at taxidenbosch.eu/terms-of-use
+    // (KNV Zorgvervoer en Taxi general conditions, filed 10 December 2019).
+    terms: {
+      eyebrow: 'TERMS',
+      title: 'Terms of Use',
+      intro:
+        'The transport conditions below are the Terms of Use published on the existing Den Bosch Taxi / Snel Taxi site. They are presented here in the original Dutch wording of that source.',
+      sourceNote:
+        'Nederlands Vervoer ter griffie van de rechtbank te ’s-Gravenhage op 10 december 2019, aktenummer 35/2019. Deze algemene voorwaarden treden in werking per 1 januari 2020.',
+      articles: [
+        {
+          id: 'art1',
+          heading: 'Artikel 1: Begripsomschrijving',
+          paragraphs: [
+            'In deze Algemene Voorwaarden voor Zorgvervoer en Taxi vervoer wordt verstaan onder:',
+          ],
+          list: [
+            'Taxivervoer/Zorgvervoer: al het overeengekomen personenvervoer per Auto zoals bedoeld in artikel 1 van de Wet personenvervoer 2000, waarbij de ritprijs van tevoren is overeengekomen dan wel wordt bepaald door het hanteren van de Taxameter. Het vervoer omvat tevens het in- en uitstappen.',
+            'Vervoerovereenkomst: de tussen Reiziger/ Opdrachtgever en Vervoerder afgesloten overeenkomst om taxivervoer te verrichten.',
+            'Taxistandplaats: een deel van de voor het openbaar verkeer openstaande weg dat door de wegbeheerder is aangewezen als parkeerplaats voor taxi’s.',
+            'Auto: motorrijtuig, als bedoeld in artikel 1 van de Wet personenvervoer 2000.',
+            'Reiziger: de persoon die door Vervoerder wordt vervoerd.',
+            'Opdrachtgever: de natuurlijke of rechtspersoon die een Vervoerovereenkomst aangaat met Vervoerder.',
+            'Opdracht: (a) een opdracht van een natuurlijke persoon aan een Vervoerder die op een Taxistandplaats reizigers afwacht; (b) iedere andere opdracht van een Reiziger/ Opdrachtgever aan Vervoerder.',
+            'Vervoerder: de natuurlijke persoon of rechtspersoon, lid van KNV Zorgvervoer en Taxi, dan wel beschikkend over een geldig TX-Keurmerk, diens Bestuurder(s) van de auto(’s) daaronder begrepen, die zich verbindt personen te vervoeren per Auto.',
+            'Bestuurder: bestuurder van de auto waarmee taxivervoer wordt verricht (de taxichauffeur) in dienst van Vervoerder met inbegrip van andere Bestuurders van de auto, die niet in dienst zijn van vervoerder maar wel dienst doen in zijn opdracht in een vervoermiddel van Vervoerder of een vervoermiddel dat aan Vervoerder beschikbaar is gesteld.',
+            'Handbagage: bagage die een Reiziger als gemakkelijk mee te voeren, draagbaar dan wel verrijdbaar bij zich heeft, daaronder begrepen levende dieren, alsmede andere voorwerpen die door de Vervoerder als handbagage worden toegelaten.',
+            'Taxi meter: apparaat in de auto dat de vervoerprijs overeenkomstig de kenbaar gemaakte tarieven aangeeft. De Taxi meter dient zichtbaar aanwezig te zijn.',
+            'Stichting TX-Keur: Stichting die het kwaliteitskeurmerk TX-Keur verleent en beheert.',
+            'KNV Zorgvervoer en Taxi: Werkgeversorganisatie waarbij vervoerder als lid is aangesloten.',
+          ],
+        },
+        {
+          id: 'art2',
+          heading: 'Artikel 2: Toepassingsgebied Algemene Voorwaarden',
+          paragraphs: [
+            'Deze Algemene Voorwaarden zijn van toepassing op alle Vervoerovereenkomsten en vormen de basis voor de behandeling van geschillen door de Geschillencommissie Zorgvervoer en Taxi, zoals bedoeld in artikel 14 van deze algemene voorwaarden.',
+          ],
+        },
+        {
+          id: 'art3',
+          heading: 'Artikel 3: Totstandkoming Vervoerovereenkomst',
+          list: [
+            'Een Vervoerovereenkomst komt tot stand door aanvaarding door de Reiziger/Opdrachtgever van het aanbod van de Vervoerder.',
+            'Als sprake is van een Opdracht als bedoeld in artikel 1 lid 7a, dan is Vervoerder verplicht deze opdracht te aanvaarden, behoudens het bepaalde in artikel 4 lid 1.',
+            'De verplichtingen van Vervoerder, waaronder artikel 7, gelden eveneens tegenover de Reiziger die niet als Opdrachtgever optreedt.',
+          ],
+        },
+        {
+          id: 'art4',
+          heading: 'Artikel 4: Beëindiging en annulering Vervoerovereenkomst',
+          list: [
+            'Vervoerder kan het voortzetten van de rit onmiddellijk staken en aldus de Vervoerovereenkomst beëindigen, indien de Reiziger dusdanige hinder veroorzaakt dat in alle redelijkheid niet van de Vervoerder kan worden gevergd dat hij de Reiziger (verder) vervoert. Vervoerder kan in dat geval de Reiziger gelasten het voertuig onmiddellijk te verlaten.',
+            'Vervoerder is in een geval zoals is bedoeld in lid 1, niet gehouden de Reiziger enige schade te vergoeden.',
+            'Bij voortijdige beëindiging is Reiziger, ingeval de ritprijs tot stand komt via de Taxameter, het bedrag verschuldigd dat de Taxameter aangeeft op het moment van beëindiging van de rit. Ingeval voor aanvang van de rit een ritprijs is overeengekomen, is Reiziger/Opdrachtgever een evenredig deel van de vooraf overeengekomen prijs verschuldigd, ter vergoeding van het reeds gereden deel van de rit.',
+            'Reiziger/Opdrachtgever kan voor aanvang van de bij Vervoerder bestelde rit afzien. In een dergelijk geval is de Reiziger/Opdrachtgever gehouden tot een schadeloosstelling naar redelijkheid en billijkheid aan de Vervoerder wanneer sprake is van aantoonbare schade. Dit geldt ook wanneer de Reiziger niet verschijnt op de met de Vervoerder afgesproken plaats.',
+            'Ingeval Vervoerder bij een bestelde rit niet volgens afspraak verschijnt, heeft Reiziger bij aantoonbare schade recht op een op redelijkheid en billijkheid gebaseerde schadevergoeding.',
+          ],
+        },
+        {
+          id: 'art5',
+          heading: 'Artikel 5: Verplichtingen en bevoegdheden Reiziger',
+          paragraphs: [
+            'Reiziger is gehouden door Vervoerder in alle redelijkheid gegeven aanwijzingen of instructies op te volgen, zoals het plaatsnemen op de door vervoerder aangewezen zitplaats, en de gordel om te doen voorafgaand aan de rit. Een boete die voortvloeit uit het zich niet houden aan deze verplichting door de Reiziger kan op deze worden verhaald.',
+            'Reiziger is verplicht zich in de Auto te onthouden van beschadiging en/of verontreiniging; het gebruik van alcoholhoudende dranken zonder toestemming; het meevoeren en/of gebruiken van verdovende middelen; het gebruiken van rookwaar; agressie of onbehoorlijk gedrag; en het hinderen van Vervoerder.',
+            'Reiziger is gehouden hetzij de vooraf overeengekomen ritprijs, hetzij de door de Taxameter bepaalde ritprijs te betalen.',
+            'Indien reiziger ervoor kiest om gebruik te maken van een van onze taxi’s gaat hij hiermee akkoord dat er in de auto dashcam beelden worden opgenomen. Een dashcam is aanwezig in verband met de veiligheid van zowel de reiziger als de chauffeur.',
+          ],
+        },
+        {
+          id: 'art6',
+          heading: 'Artikel 6: Betaling',
+          paragraphs: [
+            'Uitvoering op grond van de Vervoerovereenkomst geschiedt op grond van de Wet Personenvervoer 2000 vastgestelde en op correcte wijze bekend gemaakte tarieven, zoals bepaald door de Taxameter of waarbij de ritprijs van te voren overeen is gekomen.',
+            'Betalingen door Reiziger/Opdrachtgever aan Vervoerder dienen contant met een in Nederland algemeen geaccepteerd betaalmiddel te geschieden, daarbij algemeen erkende vormen van elektronische betalingen inbegrepen, tenzij anders is overeengekomen.',
+          ],
+        },
+        {
+          id: 'art7',
+          heading: 'Artikel 7: Verplichtingen en bevoegdheden Vervoerder',
+          paragraphs: [
+            'Vervoerder is verplicht de Reiziger, alsmede de door hem meegevoerde Handbagage op zorgvuldige en veilige wijze te vervoeren, de Reiziger naar de bestemming te brengen volgens de voor de Reiziger gunstigste weg, behulpzaam te zijn bij in- en uitstappen en bagage, en zorgvuldig om te gaan met persoonlijke gegevens verkregen in verband met de boeking (AVG).',
+          ],
+        },
+        {
+          id: 'art8-14',
+          heading: 'Artikelen 8–14 (samenvatting uit de brontekst)',
+          paragraphs: [
+            'Artikel 8 betreft handbagage (verpakking, weigeringsgronden voor gevaarlijke of verboden goederen, zorgplicht). Artikel 9 betreft vervoer van dieren, met een uitzondering voor hulphonden. Artikel 10 betreft gevonden voorwerpen. Artikel 11 betreft overmacht. Artikelen 12 en 13 betreffen aansprakelijkheid van vervoerder en reiziger, met de in de bron genoemde wettelijke maximeringen. Artikel 14 betreft klachten en geschillen, waaronder de Geschillencommissie Zorgvervoer en Taxi, Postbus 19365, 2500 CJ Den Haag, en vermeldt algemene voorwaarden van Taxi Centraal Den Bosch.',
+          ],
+        },
+      ],
+      confirmation: {
+        title: 'Client / legal confirmation needed',
+        body:
+          'The full Dutch source text on taxidenbosch.eu/terms-of-use should be treated as the binding publication until counsel confirms whether these KNV conditions apply unchanged to Den Bosch Taxi, whether an English translation should be issued, and whether website-specific terms (accounts, online booking requests, app use) need a separate addendum. Articles 8–14 are summarised above where the source is lengthy; publish the complete official text if required for compliance.',
+      },
+    },
+
+    driverRegister: {
+      eyebrow: 'DRIVERS',
+      title: 'Become a driver',
+      body: 'Thank you for your interest in driving with Den Bosch Taxi. A dedicated driver registration flow is being prepared for this website.',
+      status: 'Registration is not open for online submission yet. Nothing you do on this page creates an application or account.',
+      call: `Call ${contact.phoneDisplay}`,
+      contact: 'Contact us',
+      home: 'Back to the homepage',
+    },
   },
 
   footer: {
-    tagline: 'Snel Taxi Den Bosch. Taxi transport 24 hours a day, 7 days a week.',
+    tagline: 'Den Bosch Taxi. Taxi transport 24 hours a day, 7 days a week.',
     columns: [
-      {
-        title: 'Services',
-        links: [
-          { href: '#/services', label: 'All Services' },
-          { href: '#/services/airport', label: 'Airport Transfers' },
-          { href: '#/services/business', label: 'Business Transport' },
-          { href: '#/services/groups', label: 'Group Transport' },
-          { href: '#/services/events', label: 'Weddings & Events' },
-          { href: '#/services/tours', label: 'Private Tours' },
-        ],
-      },
       {
         title: 'Company',
         links: [
           { href: '#/about', label: 'About' },
           { href: '#/contact', label: 'Contact' },
-          { href: '#book', label: 'Book a Taxi' },
-          { href: 'https://www.taxidenbosch.eu/help-center', label: 'Help Center' },
-          { href: 'https://www.taxidenbosch.eu/privacy-and-policy', label: 'Privacy Policy' },
-          { href: 'https://www.taxidenbosch.eu/terms-of-use', label: 'Terms of Use' },
+          { href: BOOK, label: 'Book a Taxi' },
+        ],
+      },
+      {
+        title: 'Useful links',
+        links: [
+          { href: '#/help', label: 'Help Center' },
+          { href: '#/privacy', label: 'Privacy Policy' },
+          { href: '#/terms', label: 'Terms of Use' },
         ],
       },
     ],
     contactTitle: 'Contact',
     whatsappPrefix: 'WhatsApp ',
     open: 'Open 24/7',
-    copyright: (year) => `© ${year} Taxi Den Bosch`,
+    copyright: (year) => `© ${year} Den Bosch Taxi`,
   },
 };
 

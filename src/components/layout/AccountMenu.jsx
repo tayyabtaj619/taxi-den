@@ -1,29 +1,26 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { content, contact } from '../../content/index.js';
-import { config } from '../../config.js';
+import { content } from '../../content/index.js';
+import { config, storeLinks } from '../../config.js';
+import { driverRegisterPath } from '../../hooks/useHashRoute.js';
 import Icon from '../ui/Icon.jsx';
 
 const t = content.nav.account;
 
 /**
  * Account entry points. Customer login/registration link to the existing
- * pages on the current live site (configurable, see config.js). Drivers have
- * no web portal yet: the live site directs them to the Snel Taxi app, and
- * new drivers can register interest by email. Dashboards are a later phase.
+ * pages on the current live site (configurable, see config.js). Driver login
+ * uses the Snel Taxi App Store URL from config (confirm listing with client).
+ * "Become a driver" opens the in-site registration entry screen.
  */
 export function accountLinks() {
   return {
     customers: [
-      { key: 'login', href: config.customerLoginUrl, ...t.items.login, external: true },
-      { key: 'register', href: config.customerRegisterUrl, ...t.items.register, external: true },
+      { key: 'login', href: config.customerLoginUrl, label: t.items.login.label, external: true },
+      { key: 'register', href: config.customerRegisterUrl, label: t.items.register.label, external: true },
     ],
     drivers: [
-      { key: 'driverApp', href: contact.appStoreUrl, ...t.items.driverApp, external: true },
-      {
-        key: 'driverApply',
-        href: `mailto:${contact.email}?subject=${encodeURIComponent(t.driverApplySubject)}`,
-        ...t.items.driverApply,
-      },
+      { key: 'driverLogin', href: storeLinks.appStore, label: t.items.driverLogin.label, external: true },
+      { key: 'driverApply', href: driverRegisterPath(), label: t.items.driverApply.label },
     ],
   };
 }
@@ -41,8 +38,7 @@ function LinkGroup({ title, links, onNavigate }) {
               onClick={onNavigate}
               {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
-              <span>{l.label}</span>
-              <span className="account__hint">{l.hint}</span>
+              {l.label}
             </a>
           </li>
         ))}

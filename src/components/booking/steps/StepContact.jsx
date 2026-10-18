@@ -2,6 +2,7 @@ import { content } from '../../../content/index.js';
 import { config } from '../../../config.js';
 import { bookingService } from '../../../services/booking/index.js';
 import { validateContact, validateEntry } from '../../../lib/booking.js';
+import { pagePath } from '../../../hooks/useHashRoute.js';
 import Field from '../../ui/Field.jsx';
 import Icon from '../../ui/Icon.jsx';
 import StepShell from '../StepShell.jsx';
@@ -118,6 +119,9 @@ export default function StepContact({ onBack, onDone, onEditJourney }) {
           </span>
         </p>
         <p className="account-note__hint">{t.accountNote}</p>
+        <p className="account-note__hint">
+          <a href={pagePath('help')}>Help Center</a>
+        </p>
       </div>
     </StepShell>
   );

@@ -10,16 +10,25 @@
   max-width: var(--max-w); margin: 0 auto; padding: 18px var(--gutter);
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
 }
-.logo { display: flex; align-items: center; gap: 10px; color: var(--c-white); text-decoration: none; }
-.logo:hover { color: var(--c-white); }
-.logo__mark {
-  width: 36px; height: 36px; border-radius: 9px; background: var(--c-gold); color: var(--c-ink);
-  display: grid; place-items: center; font-weight: 800; font-size: 14px; letter-spacing: -.02em; flex: none;
+.logo {
+  display: flex; align-items: center; gap: 10px; color: var(--c-white); text-decoration: none;
+  flex: none; max-width: min(200px, 42vw);
 }
-.logo__mark--dark { background: var(--c-ink); color: var(--c-gold); }
-.logo__text { display: flex; flex-direction: column; line-height: 1.15; }
-.logo__name { font-weight: 800; font-size: 15px; letter-spacing: .06em; white-space: nowrap; }
-.logo__sub { font-size: 10.5px; color: #bdbdbd; letter-spacing: .14em; white-space: nowrap; }
+.logo:hover { color: var(--c-white); }
+/* Soft light pad so dark charcoal logo parts stay legible on the black header. */
+.logo__img {
+  display: block; width: auto; height: auto; object-fit: contain;
+}
+.logo__img--header {
+  width: 148px; height: auto; max-height: 52px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .12);
+}
+.logo__img--footer {
+  width: 168px; height: auto; max-height: 72px;
+}
 
 .nav { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; }
 .nav a { position: relative; color: rgba(255, 255, 255, .86); text-decoration: none; padding: 8px 0; transition: color .15s ease; }
@@ -54,24 +63,25 @@
 .account__btn:hover, .account__btn[aria-expanded='true'] { border-color: var(--c-white); }
 .account__btn .is-flipped { transform: rotate(180deg); }
 .account__panel {
-  position: absolute; right: 0; top: calc(100% + 10px); width: 300px; z-index: 40;
+  position: absolute; right: 0; top: calc(100% + 10px); width: 260px; z-index: 40;
   background: var(--c-white); color: var(--c-ink); border-radius: 14px; padding: 8px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, .28); animation: pop .16s var(--ease-out);
 }
 @keyframes pop { from { opacity: 0; transform: translateY(-4px); } }
-.account__groups { display: grid; gap: 4px; }
-.account__group { padding: 6px 0; }
+.account__groups { display: grid; gap: 2px; }
+.account__group { padding: 4px 0; }
 .account__group + .account__group { border-top: 1px solid var(--c-line); }
 .account__group-title {
-  margin: 4px 12px 6px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--c-muted);
+  margin: 4px 12px 4px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--c-muted);
 }
 .account__group ul { list-style: none; margin: 0; padding: 0; }
 .account__link {
-  display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 9px;
+  display: flex; align-items: center; padding: 11px 12px; border-radius: 9px;
   text-decoration: none; color: var(--c-ink); font-size: 14px; font-weight: 700;
+  min-height: 44px;
 }
 .account__link:hover { background: var(--c-canvas); color: var(--c-ink); }
-.account__hint { font-size: 12px; font-weight: 500; color: var(--c-muted); }
+.account__link:focus-visible { outline: 2px solid var(--c-gold); outline-offset: 1px; }
 
 /* Compact header (< 1080px) */
 .header__compact { display: none; align-items: center; gap: 8px; }
@@ -101,9 +111,8 @@
 .mobile-menu__account .account__groups { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
 .mobile-menu__account .account__group + .account__group { border-top: 0; }
 .mobile-menu__account .account__group-title { color: #8f8f8f; }
-.mobile-menu__account .account__link { color: var(--c-white); min-height: 48px; justify-content: center; }
+.mobile-menu__account .account__link { color: var(--c-white); min-height: 48px; }
 .mobile-menu__account .account__link:hover { background: #1f1f1f; color: var(--c-white); }
-.mobile-menu__account .account__hint { color: #9a9a9a; }
 .mobile-menu__actions { display: flex; gap: 8px; padding: 12px 6px 6px; flex-wrap: wrap; }
 .mobile-menu__actions .btn { flex: 1 1 160px; min-height: 50px; }
 .mobile-menu__phone { border-color: #444; color: var(--c-white); }
@@ -124,8 +133,8 @@
   .header__call-text { display: none; }
   .header__call { padding: 0; width: 44px; justify-content: center; }
 }
-@media (max-width: 359.98px) {
-  .header .logo__text { display: none; }
+@media (max-width: 400px) {
+  .logo__img--header { width: 120px; max-height: 44px; }
 }
 
 /* ---------- Hero ---------- */

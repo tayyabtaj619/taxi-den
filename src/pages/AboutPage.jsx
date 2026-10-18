@@ -5,15 +5,30 @@ import CtaBand from '../components/CtaBand.jsx';
 import Media from '../components/ui/Media.jsx';
 import Icon from '../components/ui/Icon.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
-import { pagePath } from '../hooks/useHashRoute.js';
+import { bookPath, pagePath } from '../hooks/useHashRoute.js';
+import aboutHero from '../images/about-hero.webp';
+import aboutStory from '../images/about-story.webp';
+import aboutFleet from '../images/about-fleet.webp';
 
 const t = content.pages.about;
+
+const photos = [
+  { src: aboutStory, imageAlt: t.photos[0].imageAlt, caption: t.photos[0].caption },
+  { src: aboutFleet, imageAlt: t.photos[1].imageAlt, caption: t.photos[1].caption },
+];
 
 export default function AboutPage() {
   return (
     <PageLayout current="about">
-      <PageHero id="about-title" eyebrow={t.hero.eyebrow} title={t.hero.title} body={t.hero.body} alt={t.hero.imageAlt}>
-        <a href="#book" className="btn btn--lg btn--gold">
+      <PageHero
+        id="about-title"
+        eyebrow={t.hero.eyebrow}
+        title={t.hero.title}
+        body={t.hero.body}
+        src={aboutHero}
+        alt={t.hero.imageAlt}
+      >
+        <a href={bookPath()} className="btn btn--lg btn--gold">
           {t.hero.primary}
           <Icon name="arrowRight" />
         </a>
@@ -62,9 +77,9 @@ export default function AboutPage() {
 
       <section className="container section" aria-label="Photos">
         <div className="photo-pair">
-          {t.photos.map((ph) => (
+          {photos.map((ph) => (
             <figure key={ph.caption} className="photo">
-              <Media alt={ph.imageAlt} className="photo__media" />
+              <Media src={ph.src} alt={ph.imageAlt} className="photo__media" />
               <figcaption className="photo__caption">{ph.caption}</figcaption>
             </figure>
           ))}
@@ -72,7 +87,7 @@ export default function AboutPage() {
       </section>
 
       <CtaBand id="about-cta-title" title={t.cta.title} body={t.cta.body}>
-        <a href="#book" className="btn btn--lg btn--gold">
+        <a href={bookPath()} className="btn btn--lg btn--gold">
           {t.cta.primary}
           <Icon name="arrowRight" />
         </a>

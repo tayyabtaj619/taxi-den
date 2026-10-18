@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { content, contact } from '../../content/index.js';
+import { bookPath } from '../../hooks/useHashRoute.js';
 import { HeaderLogo } from './Logo.jsx';
 import AccountMenu, { AccountLinks } from './AccountMenu.jsx';
 import Icon from '../ui/Icon.jsx';
@@ -9,10 +10,9 @@ const { nav } = content;
 /**
  * Site header shared by every page. `variant="overlay"` sits on a hero image;
  * `"solid"` is used on the booking pages. `current` marks the active nav item
- * with aria-current="page". "Book a Taxi" goes to the hero card on the homepage,
- * or straight into the flow when already on a booking page.
+ * with aria-current="page". "Book a Taxi" opens the booking entry route.
  */
-export default function Header({ variant = 'overlay', bookHref = '#book', current = null }) {
+export default function Header({ variant = 'overlay', bookHref = bookPath(), current = null }) {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef(null);
 

@@ -8,8 +8,12 @@ import BookingPage from './pages/BookingPage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ServicesPage from './pages/ServicesPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import HelpPage from './pages/HelpPage.jsx';
+import PrivacyPage from './pages/PrivacyPage.jsx';
+import TermsPage from './pages/TermsPage.jsx';
+import DriverRegisterPage from './pages/DriverRegisterPage.jsx';
 
-const CONTENT_PAGES = ['about', 'services', 'contact'];
+const CONTENT_PAGES = ['about', 'services', 'contact', 'help', 'privacy', 'terms', 'drivers'];
 
 export default function App() {
   const { route, navigate } = useHashRoute();
@@ -21,7 +25,8 @@ export default function App() {
 
   // Page title for every route.
   useEffect(() => {
-    document.title = content.pages.titles[route.page] || content.pages.titles.home;
+    const key = route.page === 'drivers' ? 'driverRegister' : route.page;
+    document.title = content.pages.titles[key] || content.pages.titles.home;
   }, [route.page]);
 
   // Content pages: start at the top (or at the requested service), and move
@@ -45,6 +50,10 @@ export default function App() {
   else if (route.page === 'about') page = <AboutPage />;
   else if (route.page === 'services') page = <ServicesPage />;
   else if (route.page === 'contact') page = <ContactPage topic={route.param} />;
+  else if (route.page === 'help') page = <HelpPage />;
+  else if (route.page === 'privacy') page = <PrivacyPage />;
+  else if (route.page === 'terms') page = <TermsPage />;
+  else if (route.page === 'drivers' && route.param === 'register') page = <DriverRegisterPage />;
   else page = <HomePage anchor={route.anchor} />;
 
   return (

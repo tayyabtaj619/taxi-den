@@ -1,5 +1,5 @@
-import { content, contact } from '../content/index.js';
-import { config } from '../config.js';
+import { content } from '../content/index.js';
+import { storeLinks } from '../config.js';
 import Media from '../components/ui/Media.jsx';
 import SectionHeading from '../components/ui/SectionHeading.jsx';
 import bookingAppImage from '../images/booking-app.webp';
@@ -23,12 +23,9 @@ export default function AppPromo() {
           <SectionHeading id="app-title" eyebrow={t.eyebrow} title={t.title} className="app-card__title" />
           <p className="lede app-card__body">{t.body}</p>
           <div className="app-card__stores">
-            <StoreButton href={contact.appStoreUrl} pre={t.appStorePre} name={t.appStore} />
-            {config.googlePlayUrl ? (
-              <StoreButton href={config.googlePlayUrl} pre={t.googlePlayPre} name={t.googlePlay} />
-            ) : config.showDevNotes ? (
-              <span className="app-card__pending">{t.googlePlayPending}</span>
-            ) : null}
+            <StoreButton href={storeLinks.appStore} pre={t.appStorePre} name={t.appStore} />
+            {/* Google Play URL is temporary — see storeLinks.googlePlay in config.js */}
+            <StoreButton href={storeLinks.googlePlay} pre={t.googlePlayPre} name={t.googlePlay} />
           </div>
         </div>
         <Media src={bookingAppImage} alt={t.imageAlt} className="app-card__media" />
